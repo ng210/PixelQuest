@@ -1,16 +1,18 @@
 /* ---------- Entity: alap osztály minden játék figurához ---------- */
 export default class Entity {
-	#id						// a figura azonosítója
-	#game					// a játék példánya
-	#pos = { x:0, y:0 }		// a figura helye (x, y koordináta)
-	#width					// a figura szélessége pixelben
-	#height					// a figura magassága pixelben
-	#className				// a figura CSS osztálya (megjelenítés)
-	#vel = { x:0, y:0 }		// a figura sebessége (vizszintes és függőleges irányban)
+	#id							// a figura azonosítója
+	#game						// a játék példánya
+	#pos = { x:0, y:0 }			// a figura helye (x, y koordináta)
+	#width						// a figura szélessége pixelben
+	#height						// a figura magassága pixelben
+	#scale = { x:1, y:1 }		// a figura méretezése (nagyítás-kicsinyítés)
+	#rotate = { x:0, y:0, z:0 }	// a figura méretezése (nagyítás-kicsinyítés)
+	#className					// a figura CSS osztálya (megjelenítés)
+	#vel = { x:0, y:0 }			// a figura sebessége (vizszintes és függőleges irányban)
 	#acc = { x:0, y:0 }		// a figura gyorsulása (vizszintes és függőleges irányban)
-	#element = null			// a figurát megjelenítő HTML (weboldali) elem
-	#time					// a figura saját ideje, amit animációhoz használ
-	#isActive
+	#element = null				// a figurát megjelenítő HTML (weboldali) elem
+	#time						// a figura saját ideje, amit animációhoz használ
+	#isActive					// aktív a figura vagy figyelmen kívül lehet hagyni?
 	
 	// #region olvasás (get) elérés
 	get id() { return this.#id }
@@ -20,6 +22,8 @@ export default class Entity {
 	set width(wi) { this.#width = wi }
 	get height() { return this.#height }
 	set height(he) { this.#height = he }
+	get scale() { return this.#scale }
+	get rotate() { return this.#rotate }
 	get className() { return this.#className }
 	get vel() { return this.#vel }
 	get acc() { return this.#acc }
@@ -70,6 +74,12 @@ export default class Entity {
 
 		// 3. Módosítjuk a HTML elem helyét (translate = eltolás), és ...
 		this.#element.style.transform = `translate(${this.#pos.x}px, ${this.#pos.y}px)`;
+		// ... forgatását és
+		this.#element.style.transform += ` rotateX(${this.#rotate.x})`
+		this.#element.style.transform += ` rotateY(${this.#rotate.y})`
+		this.#element.style.transform += ` rotateZ(${this.#rotate.z})`
+		// ... méretezését
+		this.#element.style.transform += ` scale(${this.#scale.x}, ${this.#scale.y})`
 		// ... az elem szélességét és magasságát is.
 		this.#element.style.width = this.#width + 'px';
 		this.#element.style.height = this.#height + 'px';
@@ -90,7 +100,7 @@ export default class Entity {
 	}
 
 	onCollision(entity) {
-		console.log(this.id + ' vs ' + entity.id);
+		//console.log(this.id + ' vs ' + entity.id);
 	}
 
 	// A figuránk meg is semmisülhet, eltűnhet a világunkból. Az alábbi kódblokk ezt végzi el.

@@ -115,8 +115,9 @@
   .coin {
     width: 20px;
     height: 20px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #fff0, #fff0 20%, #fff 35%, #ffd700 60%);
+    border-radius: 40%;
+    /* background: radial-gradient(circle at 30% 30%, #fff0, #fff0 20%, #fff 35%, #ffd700 60%); */
+    background-color: gold;
     border: 2px solid #c88f00;
     box-shadow: 0 3px 0 rgba(0, 0, 0, .15);
   }

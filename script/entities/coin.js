@@ -12,8 +12,8 @@ export default class Coin extends Entity {
 	}
 	update(dt) {
 		super.update(dt);
-		this.#phase += 0.1
-		this.width = this.#originalWidth * Math.sin(this.#phase)
+		this.#phase += 0.2
+		this.scale.x = (1.0 + Math.sin(this.#phase)) / 2
 	}
 	collect() {
 		this.destroy();

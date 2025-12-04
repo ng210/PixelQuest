@@ -2,23 +2,20 @@ import Entity from "../entity.js";
 
 /* ---------- Coin osztály ---------- */
 export default class Coin extends Entity {
-	constructor(game, x, y) {
-		super(game, x, y, 20, 20, 'coin');
-		this.collected = false;
-		// egyszerű "forgás" animáció: periodic bob
-		this.startY = y;
-		this.time = Math.random() * 10;
+	#phase
+	#originalWidth
+	constructor(game, id, x, y) {
+		const width = 20
+		super(game, id, x, y, width, 20, 'coin');
+		this.#originalWidth = width
+		this.#phase = Math.random();
 	}
 	update(dt) {
-		this.time += dt;
-		this.y = this.startY + Math.sin(this.time * 6) * 6;
 		super.update(dt);
-		this.updateDom();
+		this.#phase += 0.1
+		this.width = this.#originalWidth * Math.sin(this.#phase)
 	}
 	collect() {
-		this.collected = true;
 		this.destroy();
-		const idx = this.game.coins.indexOf(this);
-		if (idx >= 0) this.game.coins.splice(idx, 1);
 	}
 }

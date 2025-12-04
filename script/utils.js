@@ -21,15 +21,16 @@ function rectsOverlap(rect1, rect2) {
 	// - az első téglalap bal széle jobbra van a másik téglalap jobb szélétől, vagy
 	let c2 = bal1 > jobb2
 	// - az első téglalap alja feljebb van mint a másik téglalap alja, vagy
-	let c3 = lent1 > fent2
-	// - az első téglalap teteje lejebb van mint a másik téglalap teteje.
-	let c4 = fent1 < lent2
+	let c3 = lent1 < fent2
+	// - az első téglalap teteje lejjebb van mint a másik téglalap teteje.
+	let c4 = fent1 > lent2
 	// Ha a fenti négy feltétel közül bármelyik teljesül, akkor már nincsen fedés.
 	// Ezért a feltételeket "vagy kapcsolattal" kötjük össze, erre szolgál a || jel.
-	let noOverlap = jobb1 < bal2 || bal1 > jobb2 || lent1 < fent2 || fent1 > lent2  
+	let noOverlap = c1 || c2 || c3 || c4 
 	// Állj, nekünk nem az kell, hogy fedjék egymást a téglalapok? Fent meg azt számoltuk
 	// ki, hogy mikor NEM fedik egymást!
-	// Ezért kell az eredmény ellenkezőjét továbbadnunk, ezt pedig a ! jel éri el.
+	// Ezért kell az eredmény megfordítását (tagadását) továbbadnod,
+ // ezt pedig a ! jellel teheted meg.
 	return !noOverlap
 }
 

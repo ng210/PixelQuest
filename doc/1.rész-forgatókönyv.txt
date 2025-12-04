@@ -1,0 +1,266 @@
+I. RÉSZ - FORGATÓKÖNYV A TÖRTÉNETTEL ÖTVÖZVE
+Szereplők
+
+Bence - kíváncsi, lelkes, kreatív fiú, imád játszani.
+Lilla - Bence barátja, nyugodtabb, okos, jó megfigyelő.
+PIXEL - kis repkedő robot (kék fényekkel), aki a játék világának „magyarázója”.
+
+A JÁTÉK VILÁGA - egyszerű digitális tér: raszterek, platformok, lebegő számok, dobozok, logikai kapuk.
+
+0:00-0:30 — Nyitójelenet: a gyerekek játszanak
+Kép / animáció
+
+Szoba, íróasztal, monitoron fut egy egyszerű platformer.
+
+Bence játszik, Lilla nézi.
+
+Párbeszéd
+
+Bence: Nézd, Lilla! Már csak egy élet és végigviszem a pályát!
+Lilla (nevet): Ha nem ugrasz le a szakadékba… ötödször is.
+Bence: Az taktika volt! Csak… teszteltem.
+
+Hirtelen a monitor felvillan. A kép „behúzza” Bencét, aki eltűnik a képernyőben.
+
+Lilla: Bence?! Hova… hova tűntél?!
+
+A monitoron megjelenik a játékvilág, benne Bence, pixel-szerű formában.
+
+0:30-1:00 — Bence a játékban, találkozik PIXEL-lel
+Kép / animáció
+
+Digitális táj: raszterek, grid, platformok.
+
+Pixel robot lebeg közel hozzá.
+
+PIXEL: Üdv a Játékvilágban!
+Bence: Mi van?! Én… bent vagyok a játékban?!
+PIXEL: Igen! De ne aggódj, Lilla kívülről segíthet neked. Ki tudsz jutni… ha megérted, hogyan működik a játék!
+
+Lilla (a monitoron, félhangon): Bence… én látlak! Valami kis robot beszél hozzád!
+Bence: Hát ez szuper… vagy ijesztő?
+
+PIXEL: Mindkettő. Kezdjük is az alapokkal!
+
+INNENTŐL KEZDŐDIK AZ I. RÉSZ TANANYAG A TÖRTÉNETTEL VEZETVE
+1. Célkitűzés - A kijutáshoz meg kell érteni a játék működését
+Történet
+
+PIXEL: Ha meg akarod találni a kijáratot, értened kell, mitől működik egy játék.
+Bence: Jó, akkor taníts meg!
+Lilla (kívülről): Rajta, Bence! Legalább egyszer figyelj is valamire játék közben.
+
+Oktató rész beépítve
+
+PIXEL magyarázza:
+
+A programozás kreatív alkotás
+PIXEL kinyit egy virtuális „LEGO-dobozt”, kockák hullanak ki → utasítások jelképei.
+
+A játék sok kis szabályból áll
+A háttérben platformok, ellenségek, pontok „felvillannak”.
+
+Bence célja: megtalálni a kijáratot, egy világon keresztül, ahol a programozás szabályai szerint működő akadályok vannak.
+
+Animáció ötlet
+
+PIXEL kis hologramot vetít: „JÁTÉK SZABÁLYAI” felirattal.
+
+1.1. Miért jó programozni?
+Történetbe ágyazva
+
+Bence: Oké, de ez az egész programozás dolog… nem unalmas?
+PIXEL: Dehogy! A programozás a játékok szuperereje. Mindent te irányítasz!
+
+Magyarázat (PIXEL)
+
+Kreativitás - PIXEL rak össze egy platformot Bence alatt LEGO-szerű elemekből.
+
+Problémamegoldás - előtte megjelenik egy zárt ajtó.
+
+Bence: És hogy nyitjuk ki?
+
+PIXEL: Na látod! Erre jók a szabályok és az utasítások.
+
+Animáció ötletek
+
+LEGO-szerű épülő pálya PIXEL mozdulataira.
+
+Az ajtó felett „LOCKED - szükség van logikára” felirat.
+
+1.2. A játékok világa
+Történet
+
+A pálya egy része kivetül hologramként - különböző játék műfajok jelennek meg.
+
+PIXEL: A játékok sokfélék, de mind ugyanazokra az alapokra épülnek.
+Bence: Akkor a Mario és a lövöldözős játék is ugyanúgy működik?
+PIXEL: Igen. Csak más szabályokat használnak.
+
+Magyarázat
+
+PIXEL mutatja:
+
+platform ugrálás (Bence kipróbálja)
+
+lövedék kilövése (PIXEL demonstrálja)
+
+puzzle kockák (tologatható blokk jelenik meg)
+
+A játék szoftver feladatai (PIXEL magyarázza)
+
+A háttérben megjelennek egyszerű ikonok:
+
+kirajzolás
+
+mozgás
+
+ütközés
+
+pontszám
+
+hang
+
+PIXEL: Egy játék másodpercenként 60-szor újra és újra végigfut ezeken a szabályokon.
+
+Bence: Ez olyan, mint amikor Lilla ötször mondja el ugyanazt, hogy megértsem?
+Lilla: Legalább hatszor, Bence…
+
+2. Bevezetés a programozás világába
+2.1. Hogyan gondolkodik a számítógép?
+Történet
+
+PIXEL elővarázsol egy hatalmas lebegő „utasítás-listát”.
+Bence megpróbálja olvasni, de túl gyors.
+
+Bence: Ez nagyon gyorsan megy!
+PIXEL: Igen. A számítógépek nem okosak… csak gyorsak.
+
+Magyarázat (PIXEL)
+
+Program = kód + adatok
+A lista kettéválik: „utasítások” és „adatok”.
+
+Kód: utasítások sorozata
+PIXEL rábök egy részre: „ugorj → mozogj → ütközést ellenőrizz”.
+
+Adat: pozíciók, képek, pontok
+Bence körül megjelennek lebegő kis „ikon kockák”.
+
+Kis poén
+
+Bence: Akkor az én „adatim” most hogy néznek ki?
+PIXEL kivetít róla egy pixel-art verziót.
+Bence: Oké… ez azért menő.
+
+2.2. Algoritmusok és építőköveik
+
+Itt kezdődnek az akadálypályák!
+
+2.2.1. Változók - „adatdobozok”
+
+PIXEL: Nézd, Bence! Ezekben a dobozokban értékek vannak.
+
+Lebegő dobozok jelennek meg:
+
+„élet: 3”
+
+„pontok: 0”
+
+„speed: 5”
+
+Bence: Ha megváltoztatom a speed-et, gyorsabban megyek?
+PIXEL: Pontosan!
+
+2.2.2. Elágazások - döntési kapuk
+
+Előttük megjelenik egy nagy választókapu: két ajtó.
+
+Felette: “HA pont >= 10 → jobbra
+különben → balra”
+
+PIXEL: Első akadály! Ha eléred a 10 pontot, a jobb oldali ajtó nyílik ki.
+Bence: De nekem nulla pontom van!
+PIXEL: Akkor gyűjts néhányat.
+
+Bence összeszed pár lebegő pontot → a kapu kinyílik.
+
+2.2.3. Ciklusok - ismétlődő feladatok
+
+Egy hatalmas forgó gyűrű, amely három feladatot mutat:
+
+Mozgás
+
+Ütközés
+
+Kirajzolás
+
+Ez forog körbe-körbe.
+
+PIXEL: A játékok mindig ugyanazokat a lépéseket ismétlik.
+Bence: Mint amikor anya addig ismétel valamit, amíg nem csinálom meg?
+PIXEL: …pontosan.
+
+2.2.4. Függvények - mini programok
+
+PIXEL előhív három gombot:
+
+„ugrás()”
+
+„lövés()”
+
+„számold_pont()”
+
+Bence megnyomja az „ugrás()” gombot → ugrik.
+
+Bence: Ez jó! Kell nekem is egy ilyen gomb otthon.
+
+2.2.5. Objektumok - a karakter csomagolva
+
+PIXEL előhúz egy dobozt „PLAYER” felirattal.
+Kibontva: tulajdonságok + függvények.
+
+PIXEL: A játékbeli dolgok így vannak összerakva. Adatok + működés = objektum.
+
+Bence: Mint egy figura dobozban, amit kiveszek és van hozzá használati útmutató.
+PIXEL: Pontosan!
+
+3. A böngésző mint platform
+
+Ebben a jelenetben PIXEL elmagyarázza,
+hogy a „kinti világ” (Lilla) egy böngészőn keresztül látja a játékot.
+
+Történet + magyarázat
+
+PIXEL mutatja a HTML elemeket: egyszerű formákból épül a környezet.
+
+Mutat egy nagy vásznat: „CANVAS”.
+
+Lilla beszól: „Látom a mozgásod, Bence! A böngésző rajzolja ki!”
+
+PIXEL: „A hangokat is elküldheti - például ugráskor.”
+
+Websocket jelenik meg egy villogó kapcsolattal:
+PIXEL: „Ha online játék lennél, így beszélgetnél más játékosokkal.”
+
+Beviteli eszközök (kis akciójelenet)
+
+Bence előtt lebeg:
+
+Balra-jobbra gomb
+
+Egér célkereszt
+
+Kontroller ikon
+
+Bence kipróbálja őket, mozgása változik.
+
+I. rész vége - átvezetés a II. részhez
+
+PIXEL: Most, hogy Bence megtanulta a játék alapjait, indulhat az igazi kaland:
+hogyan írjuk meg mindezt JavaScriptben?
+
+Lilla: Bence, készen állsz?
+Bence: Most már igen!
+
+Fade out.

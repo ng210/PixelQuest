@@ -1,0 +1,181 @@
+I. Mit szeretnénk csinálni? (Videó szöveg + vizuális ötletek)
+1. Célkitűzés: készítsünk egy egyszerű játékot!
+Videó szöveg
+Sziasztok!
+Ebben a videóban megtanuljuk a játékfejlesztés alapjait — teljesen az elejétől, úgy, mintha még soha nem programoztál volna.
+A célunk egyszerű: a végére összerakunk egy működő mini játékot, amit te is tovább tudsz majd fejleszteni.
+De mielőtt belevágnánk a kódolásba, nézzük meg, egyáltalán miért jó programozni, és mitől működik egy játék.
+1.1. Miért jó programozni?
+1.1.1. Kreativitás és alkotás
+A programozás olyan, mint LEGO-ból építeni — csak itt nem kockákból, hanem ötletekből és utasításokból építünk.
+A számítógép megteszi, amit mondunk neki, és így szó szerint bármit létrehozhatunk, ami eszünkbe jut: robotot, weboldalt, játékot, animációt, appot… bármit.
+És ami a legjobb: már egy kis tudással is látványos dolgokat tudunk csinálni.
+1.1.2. Problémamegoldás, kihívás
+A programozásban sokszor ilyen kérdésekkel találkozunk:
+„Hogyan érjük el, hogy a karakter ugorjon?”
+„Mi történjen, ha hozzáér egy szörnyhöz?”
+„Hogyan számoljuk a pontokat?”
+Ezek mind apró problémák, amiket meg kell oldani.
+És amikor végre működik… az nagyon jó érzés.
+ÁBRA ÖTLETEK ehhez a részhez
+LEGO kockákból felépülő „program” metafora:
+- kockák = utasítások
+- végén összeáll egy kis figura vagy egyszerű játéklogo
+„Ötlet → Kód → Játék” folyamatábra
+Kreatív alkotás ikonok: robot, weboldal, joystick, mobilapp
+ANIMÁCIÓ ÖTLETEK
+LEGO kockák pattannak egymáshoz → összeáll egy kis pixeles karakter
+Egy villanykörte gyullad ki → átalakul játékfigurává
+„Bug” ikon → megjavul → boldog smiley (problémamegoldás)
+1.2. A számítógépes játékok világa
+Videó szöveg
+Mielőtt játékot készítünk, nézzük meg gyorsan, milyen játékok léteznek, és mit csinál egy játékprogram.
+1.2.1. Játékok típusai
+Rengeteg féle játékot ismerünk:
+platformer: Mario, Celeste
+lövöldözős: Space Invaders, Fortnite
+logikai játékok: Tetris
+versenyjátékok
+sandbox / építős játékok: Minecraft
+Mi most egy egyszerű példával kezdünk - olyannal, amit könnyű megérteni és összerakni.
+1.2.2. A játék szoftver feladatai
+Egy játék sok apró dologból áll össze, például:
+kirajzolja a pályát és a karaktereket,
+mozgatja őket,
+figyeli, mikor mivel ütközöl,
+számolja a pontokat,
+zenét és hangokat játszik le,
+és persze: folyamatosan frissíti a képet, akár másodpercenként 60-szor!
+Ha belegondolsz: egy játék tulajdonképp egy nagyon gyors, nagyon kitartó „mesemondó”, ami mindig újra és újra elmeséli, mi történik a képernyőn.
+ÁBRA ÖTLETEK ehhez a blokkhoz
+Játéktípus ikonok (platformer ugró karakter, spaceship shooter, puzzle kockák)
+Egyszerű játék loop ábra:
+Beolvas → 2. Frissít → 3. Kirajzol → → → körbe
+"Mit csinál a játék?" piktogramok:
+- mozgás nyilak
+- összeütköző ikonok
+- pontszámmérő
+- hanghullám ikon
+ANIMÁCIÓ ÖTLETEK
+ugráló stickman platformokon → klasszikus platformer mozdulat
+kis űrhajó lövő animáció 2-3 sprite-ból
+pontszám növekedése: „+10” felvillanó animáció
+képernyőfrissítés szemléltetése: 3 kép gyors váltakozása → smooth mozgássá áll össze
+2. Bevezetés a programozás világába
+Videó szöveg
+Ami most jön, nagyon fontos alap.
+Nem kell megijedni — végig egyszerű példákat fogunk nézni.
+2.1. Hogyan gondolkodik a számítógép?
+A számítógép nem okos, csak gyors.
+Amit mondunk neki, azt csinálja — pontosan, szóról szóra.
+2.1.1. Program = kód + adatok
+Egy program két részből áll:
+kód → mit kell csinálni
+adat → mivel kell csinálni
+Például egy játékban:
+kód: ugrás, mozgás, ütközés vizsgálata
+adat: a karakter pozíciója, a pálya, a sebesség, a pontok
+2.1.2. Kód: utasítások sorozata
+A számítógép végrehajtja:
+lépés: tedd ezt
+lépés: tedd azt
+lépés: ha ez történt, akkor amazt
+Mint egy recept — ha a lépések jók, a „torta” jól sikerül.
+2.1.3. Adatok: szöveg, kép, hang, videó
+A játékok tele vannak adatokkal:
+milyen képet használ a karakter,
+hol áll a pályán,
+mennyi az élete,
+milyen hang szól ugráskor.
+ÁBRA ÖTLETEK
+Program = Kód + Adat nagy két kocka diagram
+Recept metafora: „1. keverd meg, 2. süsd meg → torta” analógia
+Adattípus ikonok: „A” (szöveg), kép ikon, hanghullám, filmkocka
+ANIMÁCIÓ ÖTLETEK
+kód és adat két puzzle darab → összepattan → program ikon
+„utasításlista” animáció (1 → 2 → 3 sor kiemelve)
+karakterpozíció kis ikon mozog koordináta-rácson
+2.2. Algoritmusok és építőköveik
+Videó szöveg
+Most nézzük meg a programozás alapvető építőkockáit.
+Ezeket minden programozási nyelv használja — így a játékok is.
+2.2.1. Változók és értékek
+A változók olyanok, mint kis dobozok.
+Minden dobozban lehet valami:
+egy szám (például 10 pont),
+egy szöveg („Game Over”),
+vagy akár egy pozíció.
+Megjegyzik az adatot, amivel dolgozunk.
+2.2.2. Elágazások és feltételek
+„Ha a karakter hozzáér egy ellenséghez, akkor veszít egy életet.”
+„Ha megnyomom a jobbra gombot, akkor menj jobbra.”
+A program döntéseket hoz.
+2.2.3. Ismétlések, ciklusok
+A játékok minden képkockánál újra és újra lefutnak.
+Ezért kell a ciklus:
+frissítsd a pozíciót
+ellenőrizd az ütközést
+rajzold ki újra a képet
+ismételd meg
+2.2.4. Eljárások és függvények
+Képzelj el mini programokat a programon belül.
+Például:
+„ugrás()”
+„lövés()”
+„számold_ki_a_pontot()”
+Ezeket bármikor meghívhatjuk.
+2.2.5. Objektumok
+Az objektum egy „csomagolt” dolog:
+benne vannak az adatok (pl. player.x, player.y),
+és benne vannak a hozzá tartozó szabályok/függvények (player.jump()).
+Mint egy játékfigura kartondobozban, ami tartalmazza a figurát és a használati utasítást.
+ÁBRA ÖTLETEK
+Változó = doboz → benne szám vagy ikon
+„HA … AKKOR” elágazás nyílakkal
+Ciklus kördiagram (loop)
+Függvény ikon: gomb → valamire reagál
+Objektum = doboz + tulajdonságok + műveletek
+ANIMÁCIÓ ÖTLETEK
+változó „dobozába” beugrik a szám: 10
+elágazásnál a nyíl jobbra vagy balra indul el
+ciklus körbe futó animált nyíl
+objektum kinyílik: tulajdonságok „kiesnek” belőle
+3. A böngésző mint platform
+Videó szöveg
+Sokan nem tudják, de egy böngésző ma már egy mini játékengine is lehet.
+HTML, CSS és JavaScript segítségével teljes játékokat készíthetünk.
+3.1. Megjelenítés
+3.1.1. HTML elemek
+A weboldalak építőkockái.
+Mint a játék díszletei.
+3.1.2. Canvas
+Ez egy üres rajzvászon, ahova mi rajzolhatunk:
+játékfigurát,
+pályát,
+lövedékeket,
+effekteket.
+3.2. Hang
+3.2.1. Audio komponens
+Egy sor kóddal le tudunk játszani hangot: ugrás, ütközés, háttérzene.
+3.3. Hálózati kapcsolat
+3.3.1. HTTP
+Adatok lekérése a netről - például pályák vagy toplista.
+3.3.2. WebSocket
+Valós idejű kommunikáció - így működnek az online játékok.
+3.4. Beviteli eszközök
+3.4.1. Billentyűzet
+Mozgás: balra, jobbra, ugrás.
+3.4.2. Egér
+Kattintás, célzás, lövés.
+3.4.3. Kontroller
+Igen, a böngésző már ezt is tudja kezelni!
+ÁBRA ÖTLETEK
+HTML ikon → Canvas ikon → JS ikon → játék
+Billentyű ikon (← → ↑)
+Audio hanghullám
+Websocket: két számítógép közti villogó kapcsolat
+ANIMÁCIÓ ÖTLETEK
+Canvas üres → megjelenik benne egy karakter rajzolva
+Billentyűzet gomb lenyomás → karakter jobbra csúszik
+Egér célkereszt → lövés sprite
+Hanghullám, amikor ugrás hangot lejátszik

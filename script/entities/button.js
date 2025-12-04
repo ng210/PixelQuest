@@ -1,4 +1,4 @@
-import Entity from "../entity.js";
+import Entity from "./entity.js";
 
 /* ---------- Button (nyomó) ---------- */
 export default class Button extends Entity {

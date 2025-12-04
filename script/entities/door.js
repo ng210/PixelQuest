@@ -1,9 +1,11 @@
-import Entity from "../entity.js";
+import Entity from "./entity.js";
 
 /* ---------- Door (kapu) ---------- */
 export default class Door extends Entity {
 	#requiredCoins
 	#isOpen
+
+	get isOpen() {return this.#isOpen }
 	constructor(game, id, x, y, requiredCoins = 3) {
 		super(game, id, x, y, 80, 120, 'door locked');
 		this.#isOpen = false;

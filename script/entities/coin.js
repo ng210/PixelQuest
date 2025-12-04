@@ -1,4 +1,4 @@
-import Entity from "../entity.js";
+import Entity from "./entity.js";
 
 /* ---------- Coin osztály ---------- */
 export default class Coin extends Entity {

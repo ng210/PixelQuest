@@ -22,8 +22,8 @@ export default class Platform extends Entity {
 		super.update(dt);
 		if (this.#path && this.#path.length > 0) {
 			const t = this.#path[this.#currentTargetIndex];
-			const dx = t.x - this.x;
-			const dy = t.y - this.y;
+			const dx = t.x - this.pos.x;
+			const dy = t.y - this.pos.y;
 			const dist = Math.hypot(dx, dy);	// = négyzetgyök(dx*dx + dy*dy) = távolság
 			if (dist < 1) {
 				this.#currentTargetIndex = (this.#currentTargetIndex + 1) % this.#path.length;

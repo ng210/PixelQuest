@@ -4,23 +4,22 @@ import InputHandler from './inputhandler.js'
 import SoundManager from './soundmanager.js'
 import UIManager from './uimanager.js'
 
-import Entity from './entity.js'
-import Platform from './platform.js'
+import Entity from './entities/entity.js'
+import Platform from './entities/platform.js'
 import Coin from './entities/coin.js'
 import Door from './entities/door.js'
 import Button from './entities/button.js'
-import Player from './player.js'
-
-// A játékos kiinduló helye a világban
-const PlayerStartPosition = {x:80, y:120 }
+import Player from './entities/player.js'
 
 /* ---------- Game motor/menedzser ---------- */
 export default class Game {
+	PlayerStartPosition = {x:80, y:120 }	// A játékos kiinduló helye a világban
+
 	#viewport			// A játék grafikus felületét megjelenítő HTML elem, két része:
 	#worldElement		// - a játék világa,
 	#hud				// - az információk kijelzői.
 	#input			 	// A bemeneteket kezelő rész
-	#sound				// A hang lejátszást kezelő rész
+	#sounds				// A hang lejátszást kezelő rész
 	#ui					// A megjelenítést kezelő rész
 						// A játékban található összes 
 	#entities			// - figura listája
@@ -34,12 +33,17 @@ export default class Game {
 	#isRunning
 	#cameraPos = { x:0, y:0 }
 
-	#gravity = 1.4		// px / sec^2
+	#gravity = 14		// px / sec^2
 
 	// #region olvasás (get) elérés
 	get door() { return this.#doors[0]; }
 	get player() { return this.#players[0]; }
 	get gravity() { return this.#gravity; }
+
+	get input() { return this.#input }
+	get sounds() { return this.#sounds }
+	get ui() { return this.#ui }
+
 	//#endregion
 
 	constructor() {
@@ -49,7 +53,7 @@ export default class Game {
 		this.worldWidth = 1600
 		this.worldHeight = 900 // játéktér mérete
 		this.#input = new InputHandler()
-		this.#sound = new SoundManager()
+		this.#sounds = new SoundManager()
 		this.#ui = new UIManager()
 
 		this.#entities = []
@@ -128,7 +132,7 @@ export default class Game {
 
 		// egyszerű pálya: talaj és lebegő platformok
 		// talaj
-		const ground = new Platform(this, 'Talaj', 0, 420, 1600, 64, false)
+		const ground = new Platform(this, 'Talaj', 0, 440, 1600, 64, false)
 		ground.color = 'linear-gradient(#7b4f2f,#5f3a27)'
 		this.addEntity(ground);
 
@@ -140,7 +144,7 @@ export default class Game {
 		this.addEntity(new Platform(this, 'P5', 1240, 300))
 
 		// player
-		this.addEntity(new Player(this, 'Player', PlayerStartPosition.x, PlayerStartPosition.y))
+		this.addEntity(new Player(this, 'Player', this.PlayerStartPosition.x, this.PlayerStartPosition.y))
 
 		// Pixel (segítő robot) lebeg a player mellett
 		this.pixel = this.addEntity(new Entity(this, 'PIX', this.player.x + 56, this.player.y - 20, 40, 40, 'pixel'))
@@ -150,7 +154,7 @@ export default class Game {
 		this.addEntity(new Coin(this, 'C2', 360, 200))
 		this.addEntity(new Coin(this, 'C3', 620, 140))
 		this.addEntity(new Coin(this, 'C4', 900, 200))
-		this.addEntity(new Coin(this, 'C5', 1260, 260))
+		this.addEntity(new Coin(this, 'C5', 1260, 200))
 
 		// TODO: nyomógomb hozzáadása
 		// // push into world elements arrays for global update
@@ -162,7 +166,7 @@ export default class Game {
 		// this.buttons.push(btn)
 
 		// door - pálya végén
-		this.addEntity(new Door(this, 'D1', 1440, 320, 5)) // 5 érme kell a nyitáshoz
+		this.addEntity(new Door(this, 'D1', 1440, 300, 5)) // 5 érme kell a nyitáshoz
 
 		// TODO: UI kialakítása
 		// // játékUI alapok

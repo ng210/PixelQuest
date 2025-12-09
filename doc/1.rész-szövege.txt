@@ -1,100 +1,163 @@
-I. Mit szeretnénk csinálni? (Videó szöveg + vizuális ötletek)
-1. Célkitűzés: készítsünk egy egyszerű játékot!
-Videó szöveg
-Sziasztok!
-Ebben a videóban megtanuljuk a játékfejlesztés alapjait — teljesen az elejétől, úgy, mintha még soha nem programoztál volna.
-A célunk egyszerű: a végére összerakunk egy működő mini játékot, amit te is tovább tudsz majd fejleszteni.
-De mielőtt belevágnánk a kódolásba, nézzük meg, egyáltalán miért jó programozni, és mitől működik egy játék.
-1.1. Miért jó programozni?
-1.1.1. Kreativitás és alkotás
-A programozás olyan, mint LEGO-ból építeni — csak itt nem kockákból, hanem ötletekből és utasításokból építünk.
+Fade-in: világoskék átmenetes háttér
+PIXEL berepül jobb oldalról és beszélni kezd.
+PIXEL: Sziasztok! Pixel vagyok! Ez itt a Horváth Boldizsár Közgazdasági és Informatikai Technikum Mindentudás Technikuma című sorozatának következő része, melyben a játékfejlesztés alapjait fogjuk megismerni. Nem baj, ha még sohasem programoztál korábban, mert a programozás alapjait is meg fogjuk vizsgálni. A cél egyszerű, de nagyratörő: az előadás végére rakjunk össze egy működő mini játékot, amit aztán te is tovább tudsz majd fejleszteni. Természetesen a korlátozott idő miatt nem teljesen nulláról építkezünk, hanem előre elkészített elemekből, azaz komponensekből, de az alapokat és az elveket így is tökéletesen be lehet majd mutatni.
+
+FELIRAT: Miért jó programozni? - számítógép ikon
+
+PIXEL: A programozás olyan, mint LEGO-ból építeni — csak itt nem kockákból, hanem ötletekből és a számítógép által értelmezhető utasításokból építünk.
+PIXEL feje fölött megjelentik egy buborék, benne a későbbi Jankó figurája, aztán megjelenik egy másik buborék benne egy kontroller, egy harmadik abban egy hangjegy. Az első buborékból "Player" feliratú LEGO kocka lesz, a másodikból "Input" feliratú, a harmadikból "Hang" feliratú. PIXEL egymásra építi őket.
 A számítógép megteszi, amit mondunk neki, és így szó szerint bármit létrehozhatunk, ami eszünkbe jut: robotot, weboldalt, játékot, animációt, appot… bármit.
-És ami a legjobb: már egy kis tudással is látványos dolgokat tudunk csinálni.
-1.1.2. Problémamegoldás, kihívás
-A programozásban sokszor ilyen kérdésekkel találkozunk:
-„Hogyan érjük el, hogy a karakter ugorjon?”
-„Mi történjen, ha hozzáér egy szörnyhöz?”
-„Hogyan számoljuk a pontokat?”
-Ezek mind apró problémák, amiket meg kell oldani.
-És amikor végre működik… az nagyon jó érzés.
-ÁBRA ÖTLETEK ehhez a részhez
-LEGO kockákból felépülő „program” metafora:
-- kockák = utasítások
-- végén összeáll egy kis figura vagy egyszerű játéklogo
-„Ötlet → Kód → Játék” folyamatábra
-Kreatív alkotás ikonok: robot, weboldal, joystick, mobilapp
-ANIMÁCIÓ ÖTLETEK
-LEGO kockák pattannak egymáshoz → összeáll egy kis pixeles karakter
-Egy villanykörte gyullad ki → átalakul játékfigurává
-„Bug” ikon → megjavul → boldog smiley (problémamegoldás)
-1.2. A számítógépes játékok világa
-Videó szöveg
-Mielőtt játékot készítünk, nézzük meg gyorsan, milyen játékok léteznek, és mit csinál egy játékprogram.
-1.2.1. Játékok típusai
-Rengeteg féle játékot ismerünk:
-platformer: Mario, Celeste
-lövöldözős: Space Invaders, Fortnite
-logikai játékok: Tetris
-versenyjátékok
-sandbox / építős játékok: Minecraft
-Mi most egy egyszerű példával kezdünk - olyannal, amit könnyű megérteni és összerakni.
-1.2.2. A játék szoftver feladatai
-Egy játék sok apró dologból áll össze, például:
-kirajzolja a pályát és a karaktereket,
-mozgatja őket,
-figyeli, mikor mivel ütközöl,
-számolja a pontokat,
-zenét és hangokat játszik le,
-és persze: folyamatosan frissíti a képet, akár másodpercenként 60-szor!
-Ha belegondolsz: egy játék tulajdonképp egy nagyon gyors, nagyon kitartó „mesemondó”, ami mindig újra és újra elmeséli, mi történik a képernyőn.
-ÁBRA ÖTLETEK ehhez a blokkhoz
-Játéktípus ikonok (platformer ugró karakter, spaceship shooter, puzzle kockák)
-Egyszerű játék loop ábra:
-Beolvas → 2. Frissít → 3. Kirajzol → → → körbe
-"Mit csinál a játék?" piktogramok:
-- mozgás nyilak
-- összeütköző ikonok
-- pontszámmérő
-- hanghullám ikon
-ANIMÁCIÓ ÖTLETEK
-ugráló stickman platformokon → klasszikus platformer mozdulat
-kis űrhajó lövő animáció 2-3 sprite-ból
-pontszám növekedése: „+10” felvillanó animáció
-képernyőfrissítés szemléltetése: 3 kép gyors váltakozása → smooth mozgássá áll össze
-2. Bevezetés a programozás világába
-Videó szöveg
-Ami most jön, nagyon fontos alap.
-Nem kell megijedni — végig egyszerű példákat fogunk nézni.
-2.1. Hogyan gondolkodik a számítógép?
-A számítógép nem okos, csak gyors.
-Amit mondunk neki, azt csinálja — pontosan, szóról szóra.
-2.1.1. Program = kód + adatok
-Egy program két részből áll:
-kód → mit kell csinálni
-adat → mivel kell csinálni
-Például egy játékban:
-kód: ugrás, mozgás, ütközés vizsgálata
-adat: a karakter pozíciója, a pálya, a sebesség, a pontok
-2.1.2. Kód: utasítások sorozata
-A számítógép végrehajtja:
-lépés: tedd ezt
-lépés: tedd azt
-lépés: ha ez történt, akkor amazt
-Mint egy recept — ha a lépések jók, a „torta” jól sikerül.
-2.1.3. Adatok: szöveg, kép, hang, videó
-A játékok tele vannak adatokkal:
-milyen képet használ a karakter,
-hol áll a pályán,
-mennyi az élete,
-milyen hang szól ugráskor.
-ÁBRA ÖTLETEK
-Program = Kód + Adat nagy két kocka diagram
-Recept metafora: „1. keverd meg, 2. süsd meg → torta” analógia
-Adattípus ikonok: „A” (szöveg), kép ikon, hanghullám, filmkocka
-ANIMÁCIÓ ÖTLETEK
-kód és adat két puzzle darab → összepattan → program ikon
-„utasításlista” animáció (1 → 2 → 3 sor kiemelve)
-karakterpozíció kis ikon mozog koordináta-rácson
+És ami a legjobb: már egy kis tudással is látványos dolgokat tudunk csinálni. Megjelenik egy monitor és rajta a majd elkészítendő játék fut.
+
+FELIRAT: Kihívás, megoldás keresés - villanykörte ikon
+
+PIXEL: A programozásban rengeteg kérdésekkel találkozunk:
+„Hogyan érjük el, hogy a karakter ugorjon?” - PIXEL ugrik egyet
+„Mi történjen, ha hozzáér egy szörnyhöz?” - Megjelenik egy szörny, PIXEL hozzáér, mire az eltűnik
+„Hogyan számoljuk a pontokat?” - Megjelenik egy számláló, ami felfelé számol
+Ezek mind apró problémák, amiket meg kell oldani. És amikor végre minden működik… az nagyon jó érzés! Alkotás!
+PIXEL szemüveges lesz, kezében pálca, megjelenik mellette egy tábla rajta: Ötlet → Kód → Játék folyamatábra. PIXEL a három szóra mutat a pálcával és felolvassa őket.
+
+PIXEL: Nézzünk kicsit körül a számítógépes játékok között, talán észreveszünk közös dolgokat, hasonlóságokat!
+Megjelenik újra a monitor és sorban 1-2mp részleteket látunk játékokból: Mario, Street Fighter, Zelda, Clash Royal, Tetris, Pacman
+PIXEL: Nagyon sokféle játék létezik: [PIXEL egyre gyorsabban] ugrálós vagy platformer, lövöldözős, verekedős, logikai, sport és versenyzős, stratégiai, nyilt világ és építkezős.
+Mindegyik játék három fő dolgot teljesít:
+Figyeli a játékos jeleit, legyen az egy billentyű, az egér vagy a kontroller.
+Kiszámítja a játék világának új állapotát, hogy merre mozdul a játékos, merre mozognak az ellenfelek, hogyan változik a háttér színe, és még sok minden más.
+Végül a megváltozott világot megjeleníti, kép és hang formájában.
+Na de milyen fajta játékot vizsgáljunk meg közelebbről?
+Egyik klasszikust választottam, vagyis nem is én választottam, hanem két kis barátunk Jankó és Klári. Nézzétek csak!
+
+A monitoron megjelenik egy szoba képe, 2 gyerekkel, a kép ráközelít, míg a monitor képe teljesen kitölti a képet.
+
+FELIRAT: Jankó és Klári kalandja
+
+Új kép, Jankó és Klári platformer játékkal játszanak egy nagy tévé előtt.
+Klári: Jankó már egy órája játszol! Nem fizikát kéne tanulnod?
+JANKÓ: Még van időm, egyébként is miért szólsz bele? Te miért nem tanulsz?
+Klári: Én már megtanultam, nem volt nehéz.
+JANKÓ a játékra figyel, Klári rajzol valamit.
+Hirtelen a monitor fénye felerősödik, mindkét gyerek megijed és felkiált: MI EZ?
+JANKÓ: Segítség!
+Hirtelen megint normális a szoba, a monitoron egy figura látható, téglalap alakú, de hasonlít Jankóra.
+Klári: Jankó! Hol vagy! Ez nem vicces!
+Észreveszi a figurát a monitoron.
+Klári: JANKÓ! Hogy kerültél oda?!? Gyere ki gyorsan, mielőtt anya észreveszi!
+JANKÓ kissé torzított 8bites hangon: Nem tudom, hogyan kerültem ide! Segíts Klári!
+PIXEL megjelenik a semmiből és megszólítja Jankót.
+PIXEL: Ne aggódj Jankó, én majd segítek neked! Csak úgy tudsz visszatérni a saját világodba, ha megnyitod a kaput ebben a játékban.
+JANKÓ: Te ki vagy? Téged is beszippantott a játék?
+PIXEL: A nevem Pixel. Én a játék MI asszisztense vagyok, tehát az a dolgom, hogy segítsek! Kezdjük is el!
+JANKÓ: Rendben, még ez is jobb mint fizikát tanulni!
+Klári: Ezt hallottam ám!
+A kép lefagy, mintha leállították volna a videót. Újra Pixelt látjuk, mellette a monitoron a kimerevített kép. Pixel szemüveget visel és megint a pálca van a kezében.
+
+FELIRAT: A programozás alapjai
+
+PIXEL: Ami most jön, nagyon fontos alap. Nem kell megijedni, csak egyszerű példákat fogunk megnézni, mert a cél az, hogy ráérezzetek a programozáshoz szükséges gondolkodásra.
+Na de hogyan is működik a számítógép? Mennyire okos? A számítógép nem okos, csak azt végzi el, mire utasítjuk. De azt borzasztóan pontosan és gyorsan teszi.
+Klári: Tehát közöljük vele, hogy mikor mivel mit csináljon?
+PIXEL: Így van! A számítógépes program nem más mint annak a leírása, hogy mikor mivel mit csináljon a számítógép. Hogy mit csináljon, ezt adjuk meg az utasításokkal, azaz a program kódjával. Hogy mivel vagy min dolgozzon, ezt adjuk meg adatokkal. Hogy mikor tegye ezt, azaz mikor fusson a program, ez általában csak tőlünk, a program használóitól függ.
+
+FELIRAT: Program = kód + adatok
+
+A felirat meg változik: 
+    kód → mit kell csinálni
+    adat → mivel kell csinálni
+PIXEL: Szerintetek a játékban, amivel játszottatok, miket írhat le a kód és miket írhatnak le adatok?
+Klári: Az biztos, hogy a pontjaink adatok, és az életek száma is!
+PIXEL: Így van, nagyon jó!
+JANKÓ: Szerintem az kód lehet, hogy tudok a figurámmal ugrani, futni és ellenfeleket legyőzni.
+PIXEL: Ismét helyes! Az akciókat utasításokkal, tehát kóddal lehet leírni.
+
+FELIRAT: Adatok és típusok
+
+PIXEL: Mit gondoltok, minden adat egyforma, vagy esetleg különböző fajta adatok vannak?
+JANKÓ: Szerintem kétféle adat van, vagy ismerem vagy nem.
+Klári: Pont mint amikor felelsz, nem igaz? [Kuncog]
+PIXEL: Inkább a kérdésre felelj Klári, te mit gondolsz?
+Klári: Szerintem van különbség az adatok között is, különben nem kérdeznéd. [Kuncog]
+JANKÓ: Ez kicsit olyan mint matekban, hogy vannak egész számok meg valós számok?
+PIXEL: Pontosan olyan. De itt nem csak számok lehetnek, hanem szöveges vagy logikai adatok is.
+Klári: Tehát vannak számok és vannak szövegek? De mi az a logikai adat?
+JANKÓ: Ezt te úgysem értheted, logika!
+PIXEL: Te se legyél szemtelen Jankó, inkább mondd meg, hogy szerinted a nevedet számokkal is le lehet-e írni?
+JANKÓ: Háát, nem hallottam még ilyesmiről.
+Klári: A számítógépbe be lehet írni a nevedet, bárkinek a nevét. És én úgy tudom, hogy számítógép csak a számokat ismeri.
+PIXEL: Bravó Klári! Nagyon jó irányban haladsz. Valóban a számítógép csak a számokat érti, de mi, akik használjuk a számoknak értelmezést adunk, így lehet egy szám adat szöveg, de akár hang, kép vagy videó. A számítógépes programban tehát használunk különböző típusú adatokat, a leggyakoribbak az egész és tört számok, a karakter, a szöveg és a logikai vagy igaz-hamis típus. Lássunk ezekre példákat:
+Új tábla jelenik meg:
+    egész i = 1, tört t = 0.5,
+    karakter k = "A", szöveg s = "Helló Világ",
+    logikai b = Igaz
+PIXEL: A legtöbb programnyelv az angol nyelvből kölcsönözte a kulcsszavait, így a fenti adat típusok elnevezéseit is.
+A tábla tartalma megváltozik:
+    int i = 1, float t = 0.5,
+    char k = "A", string s = "Helló Világ",
+    boolean b = True
+Az int, azaz integer az egész számokat jelenti, a float, azaz floating point, magyarul lebegőpontos számok a valós törtszámok megfelelői.
+A char, azaz character egy karakter vagyis egy betű, számjegy, írásjel vagy egyéb jel. A string, ami magyarul zsinórt vagy füzért jelent, karakterekből áll, mondhatni egy karakterfüzér vagy karakterlánc. Végül a boolean a logikai típus...
+JANKÓ: bool-micsoda? Hogy lett ez a logikai típus neve, ez nem logikus!
+PIXEL: Ez egyszerű. Az elnevezés tisztelgés George Boole 19.századi matematikus előtt, akinek a matematikai logika terén végzett munkája lett a digitális technika, tehát a számítógépek alapja. Na, most nézzük újra a játék adatait, próbáljuk meg kitalálni, hogy melyik adat, milyen típusú.
+JANKÓ: Mik is voltak az adatok?
+Klári: Jaj hát sosem figyelsz? Volt az arany, az életek száma, hogy hol is vagyunk a világban, meg...
+JANKÓ: A játékos neve, vagy névtelenül akarsz a világban szaladgálni?
+PIXEL: Jól van! Most ezeknek a típusát találjuk ki!
+A tábla üres lesz és amikor az egyik gyerek mond valamit, az megjelenik a táblán.
+Klári: Az aranyak száma biztosan egész szám!
+Megjelenik az "int gold = 1" felirat.
+JANKÓ: És az életek száma is! Vagy lehet olyan, hogy valakinek csak fél élete van?
+Megjelenik az "int lives = 3" felirat.
+PIXEL: Mindkettő egész szám, tehát egész típusúak. Van esetleg szöveges adat a játékban?
+JANKÓ: Persze, a játékos neve!
+Megjelenik a 'string name = "Jankó"' felirat.
+PIXEL: Helyes! Mi a helyzet a törtszámokkal? Van ilyen típus a játékban?
+Klári: Esetleg a figura helyzete, ha például méterben adjuk meg. Mert olyan lehet, hogy 5 és fél méter jobbra és 3 méter 20 centi felfelé, ugye?
+Megjelennek a "float positionX = 5.5" és a "float positionY = 3.2" feliratok.
+PIXEL: Természetesen, bármilyen mértékegységet választunk a hely megadására, mindig adódhat olyan helyzet, hogy egész számokkal nem tudjuk leírni.
+JANKÓ: És mire lehet használni azt a boo, bool, mi is volt az a logikai típus?
+Klári: Boolean! Szerintem azzal lehetne azt kifejezni, hogy nyertünk-e már a játékban.
+Megjelenik a "bool isWinner = false" felirat.
+PIXEL: Nagyon jó! A logikai, azaz boolean típus mindig egy eldöntendő kérdésre a válasz: igaz vagy hamis. Mindjárt látjuk, hogy ez a típus különösen fontos a programozásban!
+
+FELIRAT: A változó
+
+JANKÓ: Ha így a táblára felírva látom ezeket az jut az eszmbe, amikor matekórán feladatokat oldunk meg és felírjuk, hogy x = ez meg y = az.
+Klári: Tényleg nagyon olyan!
+PIXEL: Kiváló észrevétel Jankó! Ahogyan matematikában az x és y változók, itt is a gold, lives, name, a két position és az isWinner is változók, az értékük pedig az aranyak vagy az életek száma, a játékos neve, a pozíció x és y koordinátája és az igen-nem válasz a "győztes vagy?" kérdésre. Ezekkel a változókkal műveleteket tudunk elvégezni, ugyanúgy mint a matematikában.
+JANKÓ: Na persze, két nevet hogyan lehet összeadni, vagy megszorozni? Mi lesz a Jankó négyzete?
+PIXEL: Valóban nem minden művelet érvényes minden típusra, de ettől még igaz, hogy a változókkal, azaz a bennük tárolt értékekkel műveleteket tudunk elvégezni. Többfélét is mint amit matematikából tanultatok. Az adokkal, típusaikkal és a változók fogalmával is megismerkedtünk, ideje beszélni a műveletekről, azaz az utasításokról, amelyek a program másik részéhez, a kódhoz tartoznak. Lássuk tehát a számítógépes programok három fő építőkövét, amelyekből akár ez a játék is felépíthető.
+A képernyőn megjelenik egymás alatt a 3 pont: "1. Utasítások sorozata", "2. Elágazás", "3. Ciklus"
+
+FELIRAT: Utasítások sorozata
+
+PIXEL: A előbb már sokat beszéltünk az utasításokról. Nézzük meg a fontosabbakat!
+A táblán megjelennek sorban az utasítások.
+"int gold = 1"
+PIXEL: Szerintetek ez milyen utasítás? Mit fejez ki, vagy mit érünk el vele?
+Klári: Megadjuk, hogy mennyi aranyunk van?
+JANKÓ: Mondom, hogy ez olyan mint amikor matekból megadjuk a változó értékét.
+PIXEL: Mindkettőtöknek igaza van. Klárinak azért, mert amit ő mond, az az utasítás célját vagy szerepét fejezi ki. Amit te mondtál Jankó, az pedig az utasítás működése, hogy mit is kell csinálnia: értéket ad a változónak. Tehát ez egy értékadás. Tulajdonképpen minden utasítás értékadás, amiben egy egyenlőségjel van, és az egyenlőségjel bal oldalán egy változó, a jobb oldalán pedig egy érték vagy egy kifejezés áll. Mi lesz szerintetek a következő utasítás és mire szolgál?
+Megjelenik a táblán: gold = gold + 1
+JANKÓ: Ez így jó egyáltalán? Hova lett az elejéről az int szó?
+PIXEL: Az csak akkor kell, ha egy új változót hozunk létre. Tegyük fel, hogy itt a gold változót már korábban létrehozuk. Nos, mi a helyzet ezzel az utasítással?
+Klári: Az aranyak számához egyet ad, és ez legyen az aranyak száma!
+PIXEL: Úgy van! Megnöveli az aranyak számát eggyel!
+JANKÓ: Ezt én is tudtam volna!
+Klári: Na persze...
+PIXEL: Mehetünk tovább? Mit szóltok ehhez az utasításhoz?
+Megjelenik a táblán a 'string message = "Aranyaid száma: " + gold'
+JANKÓ: Megint ez a furcsaság, hogy a nevet összeadjuk valamivel. Egy egész számmal, talán?
+Klári: Igen, a gold egy egész számot jelent.
+PIXEL: Valóban furcsa első pillantásra, de csak azért, mert még nem ismeritek a szövegek összefűzését végző műveletet. Itt a plusz jel nem a megszokott értelemben vett összeadást jelenti, hanem a szövegek összefűzését, azaz az első szöveg végéhez toldják a másik szöveget.
+JANKÓ: Állj! Te két szövegről beszélsz, itt meg csak a név szöveg, az aranyak száma egész szám. Tehát a szöveghez egy egész számot akarsz hozzáfűzni!
+Klári: Tényleg! Ügyes vagy Jankó!
+PIXEL: Ügyes vagy bizony! Ezzel fel is fedezted a változók és típusok témakör egy fontos elemét: a típusátalakítást. Előfordul, mint most, hogy egy változó értékét nem olyan típusként szeretnék felhasználni, mint amivel létrehoztuk, hanem egy másik típusú értékként. A számból sztringet kell csinálni. Az átalakítás során felléphet hiba, de gyakrabban az fordul elő, hogy az új típus nem képes a régi típus szerint tárolt értéket átvenni és elmenteni. Például egy törtszámot, azaz float számot nem tudunk, veszteség nélkül egészként tárolni, hiszen a törtrész mindig elveszik. Egy egyszerű számot mindig lehet szövegre alakítani.
+
+
+
+
+Recept metafora: „1. keverd meg, 2. süsd meg → rántotta" hasonlat
+
 2.2. Algoritmusok és építőköveik
 Videó szöveg
 Most nézzük meg a programozás alapvető építőkockáit.
@@ -140,6 +203,45 @@ változó „dobozába” beugrik a szám: 10
 elágazásnál a nyíl jobbra vagy balra indul el
 ciklus körbe futó animált nyíl
 objektum kinyílik: tulajdonságok „kiesnek” belőle
+
+
+
+PIXEL: Ahhoz, hogy győzhess egy új játékot kell kezdened! A baj az, hogy úgy látszik a játék megsérült és egyes részei eltűntek. Nekünk kell majd menetközben megjavítanunk. Klári! Neked is segítened kell!
+Klári: Rendben, csak mondd meg, hogy mit csináljak!
+Megjelenik a játék menüje, Pixel kiválasztja az új játék menüpontot. Elkezdődik a játék, Jankó jelenik meg a játékos szerepében.
+JANKÓ: azt érzem, hogy érméket kell gyűjtenem és hogy nem szabad leesnem, de ha mégis leesnék, háromszor próbálkozhatok.
+PIXEL: Ez így van, a képernyő tetején kéne látszódnia 
+
+
+
+Mi most egy egyszerű példával kezdünk - olyannal, amit könnyű megérteni és összerakni.
+1.2.2. A játék szoftver feladatai
+Egy játék sok apró dologból áll össze, például:
+kirajzolja a pályát és a karaktereket,
+mozgatja őket,
+figyeli, mikor mivel ütközöl,
+számolja a pontokat,
+zenét és hangokat játszik le,
+és persze: folyamatosan frissíti a képet, akár másodpercenként 60-szor!
+Ha belegondolsz: egy játék tulajdonképp egy nagyon gyors, nagyon kitartó „mesemondó”, ami mindig újra és újra elmeséli, mi történik a képernyőn.
+ÁBRA ÖTLETEK ehhez a blokkhoz
+Játéktípus ikonok (platformer ugró karakter, spaceship shooter, puzzle kockák)
+Egyszerű játék loop ábra:
+Beolvas → 2. Frissít → 3. Kirajzol → → → körbe
+"Mit csinál a játék?" piktogramok:
+- mozgás nyilak
+- összeütköző ikonok
+- pontszámmérő
+- hanghullám ikon
+ANIMÁCIÓ ÖTLETEK
+ugráló stickman platformokon → klasszikus platformer mozdulat
+kis űrhajó lövő animáció 2-3 sprite-ból
+pontszám növekedése: „+10” felvillanó animáció
+képernyőfrissítés szemléltetése: 3 kép gyors váltakozása → smooth mozgássá áll össze
+
+2. Bevezetés a programozás világába
+Videó szöveg
+
 3. A böngésző mint platform
 Videó szöveg
 Sokan nem tudják, de egy böngésző ma már egy mini játékengine is lehet.

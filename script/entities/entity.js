@@ -1,4 +1,4 @@
-/* ---------- Entity: alap osztály minden játék figurához ---------- */
+// Entity: alap osztály minden játékbeli figurához
 export default class Entity {
 	#id							// a figura azonosítója
 	#game						// a játék példánya
@@ -89,6 +89,11 @@ export default class Entity {
 	// de HTML megjelenítés esetén ezt a feladatot átveszi a böngésző. Elegendő
 	// volt annyi, hogy korábban a figura HTML elemét hozzáadtuk a weboldalhoz.
 	render() {
+	}
+
+	isMoving() {
+		if (this.vel.x != 0 || this.vel.y != 0) return true;
+		return false;
 	}
 
 	// A játéknak fontos feladata, hogy kezelni tudja a különböző figurák ütközését.

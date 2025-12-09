@@ -1,19 +1,32 @@
-/* ---------- InputHandler: billentyűzet + egyszerű gamepad lehetőség ---------- */
+// InputHandler: billentyűzet + egyszerű gamepad lehetőség
+const mappedKeys = [
+    'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+    'Space',
+    'KeyA', 'KeyD', 'KeyW', 'KeyS']
+
 export default class InputHandler {
+    #keys = {};
+
+    get left() { return this.#keys.ArrowLeft || this.#keys.KeyA }
+    get right() { return this.#keys.ArrowRight || this.#keys.KeyD }
+    get up() { return this.#keys.ArrowUp || this.#keys.KeyW }
+    get down() { return this.#keys.ArrowDown || this.#keys.KeyS }
+    get button1() { return this.#keys.Space || this.#keys.KeyI }
+    get button2() { return this.#keys.Space || this.#keys.KeyO }
+
     constructor() {
-        this.keys = {};
-        this.left = false; this.right = false; this.up = false;
-        window.addEventListener('keydown', e => this._onKey(e, true));
-        window.addEventListener('keyup', e => this._onKey(e, false));
+        for (let key of mappedKeys) {
+            this.#keys[key] = false
+        }
+        window.addEventListener('keydown', e => this.#onKey(e, true));
+        window.addEventListener('keyup', e => this.#onKey(e, false));
     }
-    _onKey(e, down) {
+
+    #onKey(e, down) {
         const k = e.code;
-        if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'Space', 'KeyA', 'KeyD', 'KeyW'].includes(k)) {
+        if (this.#keys[k] !== undefined) {
+            this.#keys[k] = down;
             e.preventDefault();
         }
-        if (k === 'ArrowLeft' || k === 'KeyA') { this.left = down; }
-        if (k === 'ArrowRight' || k === 'KeyD') { this.right = down; }
-        if (k === 'ArrowUp' || k === 'Space' || k === 'KeyW') { this.up = down; }
-        this.keys[k] = down;
     }
 }

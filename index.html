@@ -4,30 +4,22 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title>A Pixel Küldetés — prototípus</title>
+	<title>A Pixel Küldetés</title>
 	<link rel="stylesheet" href="styles.css">
 	<script src="script/main.js" type="module" defer></script>
 
 </head>
 
 <body>
-
-	<div class="game-wrap">
-		<div class="viewport" id="viewport">
-			<div class="world" id="world"></div>
-		</div>
-
+	<div id="viewport" class="viewport">
+		<div id="bg1" class="plane"></div>
+		<div id="bg2" class="plane"></div>
+		<div id="world" class="plane"></div>
+		<div id="fg" class="plane"></div>
 		<div id="hud">
-			<div><strong>Pixel küldetés — prototípus</strong></div>
-			<div class="small">Használat: ← → ugrás: ↑ vagy Space</div>
-			<hr style="opacity:.2" />
-			<div>Érmék: <span id="coinCount">0</span></div>
-			<div>Életek: <span id="lives">3</span></div>
-			<div>Állapot: <span id="state">Ready</span></div>
-			<hr style="opacity:.2" />
-			<div style="margin-top:8px">
-				<button id="btn-reset">Újraindít</button>
-			</div>
+			<div><strong>Pixel küldetés</strong></div>
+			<div>Arany: <span id="coinCount">0</span></div>
+			<div id="lives">Életek: <span>♥♥♥</span></div>
 		</div>
 	</div>
 </body>

@@ -1,85 +1,120 @@
 import Entity from './entity.js';
 import { clamp } from '../utils.js'
 
-/* ---------- Player osztály ---------- */
+// Player osztály
 export default class Player extends Entity {
 	#speed			// a játékos mozgási sebessége
 	#jumpSpeed		// a játékos ugrási sebessége
 	#isOnGround		// a játékos a földön áll?
+	#wasOnGround	// a játékos a földön állt az előző ciklusban is
+	#platform		// a plattform, amin a játékos áll
 
 	#coins			// a begyűjtött érmék száma
-	#lives			// életek (próbálkozások) száma 
+	#lives			// életek (próbálkozások) száma
+
+	get jumpSpeed() { return this.#jumpSpeed }
+	get speed() { return this.#speed }
+	get wasOnGround() { return this.#wasOnGround }
+	get coins() { return this.#coins }
 
 	constructor(game, id, x, y) {
 		super(game, id, x, y, 48, 64, 'player')
-		// belső vizuál
+
+		this.#wasOnGround = false
 		this.#isOnGround = false
-		this.#speed = 22		// px / sec
-		this.#jumpSpeed = -660	// px / sec
+		this.#speed = 10
+		this.#jumpSpeed = -100
 		this.#reset()
 	}
 
 	#reset() {
 		this.#coins = 0
-		this.#lives = 3
-		this.acc.x = 0
-		this.acc.y = this.game.gravity
+		this.#lives = 4
+		this.respawn()
 	}
 
 	update(dt) {
 		super.update(dt);
 
-		// input vezérlés
-		const input = this.game.input;
-		// let ax = 0;
-		if (input.left) this.acc.x -= this.#speed
-		if (input.right) this.acc.x += this.#speed
-		this.acc.x = clamp(this.acc.x, -2, 2);
+		if (this.pos.x < 0) this.pos.x = 0
 
-		// ugrás: csak akkor ha a nyíl le van és a játékban most nyomódik
-		if (input.up && this.isOnGround) {
-			this.vel.y = this.jumpSpeed;
-			this.isOnGround = false;
-			this.game.sounds.jump();
-			this.element.classList.add('jump');
-			setTimeout(() => this.element.classList.remove('jump'), 150);
+		if (this.#platform) {
+			this.pos.x += this.#platform.vel.x * dt
+			this.pos.y += this.#platform.vel.y * dt
 		}
 
-		// padlóra érkezés (ha leesik)
+		this.vel.x = clamp(this.vel.x, -100, 100)
+		this.vel.y = clamp(this.vel.y, -100, 100)
+
+		this.#wasOnGround = this.#isOnGround
+		this.#isOnGround = false
+		this.#platform = null
+
+		// leesés
 		if (this.pos.y > this.game.worldHeight) {
 			this.respawn();
 		}
-
-		// // érmék és kapu interakció
-		// this.checkCollectibles();
 	}
 
 	render() {
 		super.render()
+		if (this.#isOnGround) {
+			this.element.classList.add('jump');
+		} else {
+			this.element.classList.remove('jump');
+		}
 		this.element.innerHTML = '<span class="eye"></span><span class="eye"></span>';
 	}
 
-	onCollision(entity) {
+	onCollision(entity, collisionInfo) {
 		let type = entity.constructor.name
 		switch (type) {
 			case 'Platform':
-				this.vel.y = 0
+				this.pos.x += collisionInfo.correction.x;
+				this.pos.y += collisionInfo.correction.y;
+				this.vel.x *= collisionInfo.velocityMask.x;
+				this.vel.y *= collisionInfo.velocityMask.y;
 				//console.log(this.id + ' vs ' + entity.id);
+				if (collisionInfo.direction.bottom) {
+					// ha az előbb még nem volt a talajon, azaz esésben volt
+					// most pedig talajon van, akkor most landol a játékos
+					if (!this.#wasOnGround) {
+					 	this.game.sounds.land()
+					}
+					// this.#status == 'onGround'
+					this.#isOnGround = true
+					this.#platform = entity
+				}
 				break
 			case 'Coin':
-				entity.collect();
-				this.#coins++;
-				// this.game.ui.updateCoins(this.coins);
-				this.game.sounds.coin();
+				const coin = entity
+				if (coin.isCollectable) {
+					coin.isCollectable = false
+					this.game.sounds.coin();
+					coin.vel.y = -400;
+					coin.element.classList.add('up')
+					setTimeout(() => {
+						coin.element.classList.remove('up')
+						coin.collect();
+						this.#coins++;
+						this.game.ui.updateCoins(this.#coins);
+					}, 500)
+				}
 				break
-			case 'Door':
-				if (this.game.door.isOpen) {
+			case 'Gate':
+				if (this.game.gate.isOpen) {
 					this.game.win();
 				} else {
 					this.game.sounds.hit();
 				}
 				break
 		}
+	}
+
+	jump() {
+		// this.#status = 'falling'
+		// this.#wasOnGround = false
+		this.vel.y = this.#jumpSpeed;
 	}
 
 	// 	// gomb lenyomás
@@ -91,17 +126,17 @@ export default class Player extends Entity {
 	// }
 
 	respawn() {
-		this.lives -= 1;
-		// TODO: UI kialakítása
-		// this.game.ui.updateLives(this.lives);
-		// TODO: ez a game dolga
-		// if (this.lives <= 0) {
-		// 	this.game.gameOver();
-		// 	return;
-		// }
 		// reset pozíció
 		this.pos.x = this.game.PlayerStartPosition.x;
 		this.pos.y = this.game.PlayerStartPosition.y;
-		this.vel.x = this.vel.y = 0;
+		this.vel.x = 0
+		this.vel.y = 0;
+		this.acc.x = 0
+		this.#platform = null
+		this.acc.y = this.game.gravity
+		this.#lives -= 1;
+		this.game.updateLives(this.#lives);
+		this.game.ui.updateCoins(this.#coins);
+
 	}
 }

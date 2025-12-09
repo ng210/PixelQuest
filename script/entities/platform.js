@@ -21,17 +21,35 @@ export default class Platform extends Entity {
 	update(dt) {
 		super.update(dt);
 		if (this.#path && this.#path.length > 0) {
-			const t = this.#path[this.#currentTargetIndex];
-			const dx = t.x - this.pos.x;
-			const dy = t.y - this.pos.y;
-			const dist = Math.hypot(dx, dy);	// = négyzetgyök(dx*dx + dy*dy) = távolság
-			if (dist < 1) {
-				this.#currentTargetIndex = (this.#currentTargetIndex + 1) % this.#path.length;
-			} else {
-				const nx = dx / dist; const ny = dy / dist;
-				this.vel.x = nx * this.#speed;
-				this.vel.y = ny * this.#speed;
+			const t1 = this.#path[this.#currentTargetIndex]
+			const t2 = this.#path[(this.#currentTargetIndex + 1) % this.#path.length]
+			const tx = t2.x - t1.x
+			const ty = t2.y - t1.y
+			const dx = t2.x - this.pos.x
+			const dy = t2.y - this.pos.y
+			
+			if ((tx > 0 && dx < 0) || (tx < 0 && dx > 0)) {
+				this.#currentTargetIndex = (this.#currentTargetIndex + 1) % this.#path.length
 			}
+
+			if ((ty > 0 && dy < 0) || (ty < 0 && dy > 0)) {
+				this.#currentTargetIndex = (this.#currentTargetIndex + 1) % this.#path.length
+			}
+
+			this.vel.x = Math.sign(tx) * this.#speed
+			this.vel.y = Math.sign(ty) * this.#speed
+
+			// const dist = Math.hypot(dx, dy);	// = négyzetgyök(dx*dx + dy*dy) = távolság
+			// if (dx < 0)
+			// if (dist < 1) {
+			// 	this.#currentTargetIndex = (this.#currentTargetIndex + 1) % this.#path.length;
+			// } else {
+			// 	const nx = dx / dist; const ny = dy / dist;
+			// 	this.vel.x = nx * this.#speed;
+			// 	this.vel.y = ny * this.#speed;
+			// }
+			// this.vel.x = nx * this.#speed;
+			// this.vel.y = ny * this.#speed;
 		}
 	}
 

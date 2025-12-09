@@ -1,22 +1,20 @@
 import Entity from "./entity.js";
 
-/* ---------- Door (kapu) ---------- */
-export default class Door extends Entity {
+/* ---------- Gate (kapu) ---------- */
+export default class Gate extends Entity {
 	#requiredCoins
 	#isOpen
 
-	get isOpen() {return this.#isOpen }
+	get isOpen() { return this.#isOpen }
+
 	constructor(game, id, x, y, requiredCoins = 3) {
-		super(game, id, x, y, 80, 120, 'door locked');
+		super(game, id, x, y, 80, 120, 'gate locked');
 		this.#isOpen = false;
 		this.#requiredCoins = requiredCoins;
 	}
 
 	tryOpen(currentCoins) {
-		if (this.#isOpen) return;
-		if (currentCoins >= this.#requiredCoins) {
-			this.open();
-		}
+		return this.#isOpen || currentCoins >= this.#requiredCoins
 	}
 
 	open() {

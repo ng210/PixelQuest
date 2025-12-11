@@ -1,7 +1,7 @@
-import Entity from "./entity.js";
+import Collectible from "./collectible.js";
 
 /* ---------- Coin osztály ---------- */
-export default class Coin extends Entity {
+export default class Coin extends Collectible {
 	#phase
 	#originalWidth
 	isCollectable
@@ -17,8 +17,5 @@ export default class Coin extends Entity {
 		super.update(dt);
 		this.#phase += 0.2
 		this.scale.x = (1.0 + Math.sin(this.#phase)) / 2
-	}
-	collect() {
-		this.destroy();
 	}
 }

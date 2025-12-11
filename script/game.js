@@ -8,8 +8,8 @@ import UIManager from './uimanager.js'
 import Entity from './entities/entity.js'
 import Platform from './entities/platform.js'
 import Coin from './entities/coin.js'
+import Life from './entities/life.js'
 import Gate from './entities/gate.js'
-import Button from './entities/button.js'
 import Player from './entities/player.js'
 
 // Game motor/menedzser
@@ -24,12 +24,12 @@ export default class Game {
 	#sounds				// A hang lejátszást kezelő rész
 	#ui					// A megjelenítést kezelő rész
 						// A játékban található összes 
-	#entities			// - figura listája
-	#platforms			// - plattform listája
-	#coins				// - érme listája
-	#buttons			// - nyomógomb listája
-	#gates				// - ajtó listája
-	#players			// A játékos figurája
+	#entities			// - figurák listája
+	#platforms			// - plattformok listája
+	#coins				// - érmék listája
+	#buttons			// - nyomógombok listája
+	#gates				// - kapuk listája
+	#players			// - játékosok figurája
 
 	#lastTime
 	#isRunning
@@ -37,7 +37,7 @@ export default class Game {
 	#currentLevel
 
 	// Előre megadott állandó értékek, konstansok
-	static #gravity = 50		// px / sec^2
+	static #gravity = 100		// px / sec^2
 	static #viewportWidth = 960
 	static #viewportHeight = 320
 
@@ -110,6 +110,7 @@ export default class Game {
 				case 'Coin': arr = this.#coins; break
 				case 'Platform': arr = this.#platforms; break
 				case 'Player': arr = this.#players; break
+				default: arr = this.#entities; break
 			}
 			ix = arr.indexOf(entity)
 			if (ix != -1) {
@@ -153,32 +154,23 @@ export default class Game {
 		this.#currentLevel = lvlData
 		this.#cleanUpWord()
 
-		// player
-		this.PlayerStartPosition.x = lvlData.player.x
-		this.PlayerStartPosition.y = lvlData.player.y
-		this.addEntity(new Player(this, 'Player', lvlData.player.x, lvlData.player.y))
-		// Pixel (segítő robot) lebeg a player mellett
-		this.pixel = this.addEntity(new Entity(this, 'PIX', this.player.x + 56, this.player.y - 20, 40, 40, 'pixel'))
-
-		// plattformok
-		for (let name in lvlData.platforms) {
-			let data = lvlData.platforms[name]
-			let platform = new Platform(this, name, data.x, data.y, data.width, data.height, data.path, data.speed)
-			this.addEntity(platform)
-		}
-
-		// érmék
-		for (let name in lvlData.coins) {
-			let data = lvlData.coins[name]
-			let coin = new Coin(this, name, data.x, data.y)
-			this.addEntity(coin)
-		}
-
-		// ajtók
-		for (let name in lvlData.doors) {
-			let data = lvlData.doors[name]
-			let gate = new Gate(this, name, data.x, data.y, data.fee)
-			this.addEntity(gate)
+		for (let name in lvlData) {
+			let item = lvlData[name]
+			let entity = null
+			// Objektum gyár
+			switch (item.type) {
+				case 'Player':
+					entity = new Player(this, name, item.x, item.y);
+					this.PlayerStartPosition.x = item.x
+					this.PlayerStartPosition.y = item.y
+					this.pixel = this.addEntity(new Entity(this, 'PIX', item.x + 56, item.y - 20, 40, 40, 'pixel'))
+					break
+				case 'Platform': entity = new Platform(this, name, item.x, item.y, item.width, item.height, item.path, item.speed); break
+				case 'Coin': entity = new Coin(this, name, item.x, item.y); break
+				case 'Life': entity = new Life(this, name, item.x, item.y); break
+				case 'Gate': entity = new Gate(this, name, item.x, item.y, item.fee); break
+			}
+			this.addEntity(entity)
 		}
 	}
 	//#endregion

@@ -48,6 +48,13 @@ static freqTable = {
 		this.tone('A2', 0.1, 'square');
 		setTimeout(() => this.tone('A3', 0.4, 'square'), dt);
 	}
+
+	life() {
+		const dt = 300
+		this.tone('F3', 0.4, 'square');
+		setTimeout(() => this.tone('A3', 0.4, 'square'), dt);
+		setTimeout(() => this.tone('C4', 0.6, 'square'), dt);
+	}
 	
 	hit() { this.tone('C2', 0.12, 'sawtooth'); }
 	

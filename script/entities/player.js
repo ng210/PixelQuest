@@ -22,8 +22,8 @@ export default class Player extends Entity {
 
 		this.#wasOnGround = false
 		this.#isOnGround = false
-		this.#speed = 10
-		this.#jumpSpeed = -100
+		this.#speed = 30
+		this.#jumpSpeed = -150
 		this.#reset()
 	}
 
@@ -44,7 +44,7 @@ export default class Player extends Entity {
 		}
 
 		this.vel.x = clamp(this.vel.x, -100, 100)
-		this.vel.y = clamp(this.vel.y, -100, 100)
+		this.vel.y = clamp(this.vel.y, -200, 200)
 
 		this.#wasOnGround = this.#isOnGround
 		this.#isOnGround = false
@@ -101,6 +101,21 @@ export default class Player extends Entity {
 					}, 500)
 				}
 				break
+			case 'Life':
+				const life = entity
+				if (life.isCollectable) {
+					life.isCollectable = false
+					this.game.sounds.life();
+					life.vel.y = -400;
+					life.element.classList.add('up')
+					setTimeout(() => {
+						life.element.classList.remove('up')
+						life.collect();
+						this.#lives++;
+						this.game.ui.updateLives(this.#lives);
+					}, 500)
+				}
+				life.collect()
 			case 'Gate':
 				if (this.game.gate.isOpen) {
 					this.game.win();

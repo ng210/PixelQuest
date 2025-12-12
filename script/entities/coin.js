@@ -8,7 +8,7 @@ export default class Coin extends Collectible {
 
 	constructor(game, id, x, y) {
 		const width = 20
-		super(game, id, x, y, width, 20, 'coin');
+		super(game, id, x, y, width, 20, ['coin']);
 		this.#originalWidth = width
 		this.#phase = Math.random();
 		this.isCollectable = true

@@ -7,7 +7,8 @@ FELIRAT: Miért jó programozni? - számítógép ikon
 PIXEL: A programozás olyan, mint LEGO-ból építeni — csak itt nem kockákból, hanem ötletekből és a számítógép által értelmezhető utasításokból építünk.
 PIXEL feje fölött megjelentik egy buborék, benne a későbbi Jankó figurája, aztán megjelenik egy másik buborék benne egy kontroller, egy harmadik abban egy hangjegy. Az első buborékból "Player" feliratú LEGO kocka lesz, a másodikból "Input" feliratú, a harmadikból "Hang" feliratú. PIXEL egymásra építi őket.
 A számítógép megteszi, amit mondunk neki, és így szó szerint bármit létrehozhatunk, ami eszünkbe jut: robotot, weboldalt, játékot, animációt, appot… bármit.
-És ami a legjobb: már egy kis tudással is látványos dolgokat tudunk csinálni. Megjelenik egy monitor és rajta a majd elkészítendő játék fut.
+És ami a legjobb: már egy kis tudással is látványos dolgokat tudunk csinálni.
+Megjelenik egy monitor és rajta a majd elkészítendő játék fut.
 
 FELIRAT: Kihívás, megoldás keresés - villanykörte ikon
 
@@ -26,7 +27,7 @@ Figyeli a játékos jeleit, legyen az egy billentyű, az egér vagy a kontroller
 Kiszámítja a játék világának új állapotát, hogy merre mozdul a játékos, merre mozognak az ellenfelek, hogyan változik a háttér színe, és még sok minden más.
 Végül a megváltozott világot megjeleníti, kép és hang formájában.
 Na de milyen fajta játékot vizsgáljunk meg közelebbről?
-Egyik klasszikust választottam, vagyis nem is én választottam, hanem két kis barátunk Jankó és Klári. Nézzétek csak!
+Egy klasszikust választottam, vagyis nem is én választottam, hanem két kis barátunk Jankó és Klári. Nézzétek csak!
 
 A monitoron megjelenik egy szoba képe, 2 gyerekkel, a kép ráközelít, míg a monitor képe teljesen kitölti a képet.
 
@@ -55,13 +56,13 @@ A kép lefagy, mintha leállították volna a videót. Újra Pixelt látjuk, mel
 FELIRAT: A programozás alapjai
 
 PIXEL: Ami most jön, nagyon fontos alap. Nem kell megijedni, csak egyszerű példákat fogunk megnézni, mert a cél az, hogy ráérezzetek a programozáshoz szükséges gondolkodásra.
-Na de hogyan is működik a számítógép? Mennyire okos? A számítógép nem okos, csak azt végzi el, mire utasítjuk. De azt borzasztóan pontosan és gyorsan teszi.
+Na de hogyan is működik a számítógép? Mennyire okos? A számítógép nem okos, csak azt végzi el, amire utasítjuk. De azt borzasztóan pontosan és gyorsan teszi.
 Klári: Tehát közöljük vele, hogy mikor mivel mit csináljon?
 PIXEL: Így van! A számítógépes program nem más mint annak a leírása, hogy mikor mivel mit csináljon a számítógép. Hogy mit csináljon, ezt adjuk meg az utasításokkal, azaz a program kódjával. Hogy mivel vagy min dolgozzon, ezt adjuk meg adatokkal. Hogy mikor tegye ezt, azaz mikor fusson a program, ez általában csak tőlünk, a program használóitól függ.
 
 FELIRAT: Program = kód + adatok
 
-A felirat meg változik: 
+A felirat megváltozik: 
     kód → mit kell csinálni
     adat → mivel kell csinálni
 PIXEL: Szerintetek a játékban, amivel játszottatok, miket írhat le a kód és miket írhatnak le adatok?
@@ -77,19 +78,19 @@ JANKÓ: Szerintem kétféle adat van, vagy ismerem vagy nem.
 Klári: Pont mint amikor felelsz, nem igaz? [Kuncog]
 PIXEL: Inkább a kérdésre felelj Klári, te mit gondolsz?
 Klári: Szerintem van különbség az adatok között is, különben nem kérdeznéd. [Kuncog]
-JANKÓ: Ez kicsit olyan mint matekban, hogy vannak egész számok meg valós számok?
+JANKÓ: Ez kicsit olyan mint matekban, hogy vannak egész számok meg törtszámok?
 PIXEL: Pontosan olyan. De itt nem csak számok lehetnek, hanem szöveges vagy logikai adatok is.
 Klári: Tehát vannak számok és vannak szövegek? De mi az a logikai adat?
 JANKÓ: Ezt te úgysem értheted, logika!
 PIXEL: Te se legyél szemtelen Jankó, inkább mondd meg, hogy szerinted a nevedet számokkal is le lehet-e írni?
 JANKÓ: Háát, nem hallottam még ilyesmiről.
-Klári: A számítógépbe be lehet írni a nevedet, bárkinek a nevét. És én úgy tudom, hogy számítógép csak a számokat ismeri.
-PIXEL: Bravó Klári! Nagyon jó irányban haladsz. Valóban a számítógép csak a számokat érti, de mi, akik használjuk a számoknak értelmezést adunk, így lehet egy szám adat szöveg, de akár hang, kép vagy videó. A számítógépes programban tehát használunk különböző típusú adatokat, a leggyakoribbak az egész és tört számok, a karakter, a szöveg és a logikai vagy igaz-hamis típus. Lássunk ezekre példákat:
+Klári: A számítógépbe be lehet írni a nevedet, bárkinek a nevét. És én úgy tudom, hogy a számítógép csak a számokat ismeri.
+PIXEL: Bravó Klári! Nagyon jó irányban haladsz. Valóban, a számítógép csak a számokat érti, de mi, akik használjuk, a számoknak értelmezést adunk, így a számként tárolt adat lehet szöveg, de akár hang, kép vagy videó is. A számítógépes programban tehát használunk különböző típusú adatokat, a leggyakoribbak az egész és törtszámok, a karakter, a szöveg és a logikai, azaz igaz-hamis típus. Lássunk ezekre példákat:
 Új tábla jelenik meg:
     egész i = 1, tört t = 0.5,
     karakter k = "A", szöveg s = "Helló Világ",
     logikai b = Igaz
-PIXEL: A legtöbb programnyelv az angol nyelvből kölcsönözte a kulcsszavait, így a fenti adat típusok elnevezéseit is.
+PIXEL: A legtöbb programnyelv az angol nyelvből kölcsönözte a kulcsszavait, így a fenti adatok típusainak elnevezéseit is.
 A tábla tartalma megváltozik:
     int i = 1, float t = 0.5,
     char k = "A", string s = "Helló Világ",
@@ -101,7 +102,7 @@ PIXEL: Ez egyszerű. Az elnevezés tisztelgés George Boole 19.századi matemati
 JANKÓ: Mik is voltak az adatok?
 Klári: Jaj hát sosem figyelsz? Volt az arany, az életek száma, hogy hol is vagyunk a világban, meg...
 JANKÓ: A játékos neve, vagy névtelenül akarsz a világban szaladgálni?
-PIXEL: Jól van! Most ezeknek a típusát találjuk ki!
+PIXEL: Jól van! Most ezeknek az adatoknak a típusát találjuk ki!
 A tábla üres lesz és amikor az egyik gyerek mond valamit, az megjelenik a táblán.
 Klári: Az aranyak száma biztosan egész szám!
 Megjelenik az "int gold = 1" felirat.
@@ -123,12 +124,14 @@ FELIRAT: A változó
 
 JANKÓ: Ha így a táblára felírva látom ezeket az jut az eszmbe, amikor matekórán feladatokat oldunk meg és felírjuk, hogy x = ez meg y = az.
 Klári: Tényleg nagyon olyan!
-PIXEL: Kiváló észrevétel Jankó! Ahogyan matematikában az x és y változók, itt is a gold, lives, name, a két position és az isWinner is változók, az értékük pedig az aranyak vagy az életek száma, a játékos neve, a pozíció x és y koordinátája és az igen-nem válasz a "győztes vagy?" kérdésre. Ezekkel a változókkal műveleteket tudunk elvégezni, ugyanúgy mint a matematikában.
+PIXEL: Kiváló észrevétel Jankó! Ahogyan matematikában az x és y változók, itt is a gold [felvillan a gold változó neve a táblán], lives [felvillan a lives], name, a két position és az isWinner is változók, az értékük pedig az aranyak vagy az életek száma, a játékos neve, a pozíció x és y koordinátája és az igen-nem válasz a "győztes vagy?" kérdésre. Ezekkel a változókkal műveleteket tudunk elvégezni, ugyanúgy mint a matematikában.
 JANKÓ: Na persze, két nevet hogyan lehet összeadni, vagy megszorozni? Mi lesz a Jankó négyzete?
-PIXEL: Valóban nem minden művelet érvényes minden típusra, de ettől még igaz, hogy a változókkal, azaz a bennük tárolt értékekkel műveleteket tudunk elvégezni. Többfélét is mint amit matematikából tanultatok. Az adokkal, típusaikkal és a változók fogalmával is megismerkedtünk, ideje beszélni a műveletekről, azaz az utasításokról, amelyek a program másik részéhez, a kódhoz tartoznak. Lássuk tehát a számítógépes programok három fő építőkövét, amelyekből akár ez a játék is felépíthető.
+PIXEL: Valóban nem minden művelet érvényes minden típusra, de ettől még igaz, hogy a változókkal, azaz a bennük tárolt értékekkel műveleteket tudunk elvégezni. Többfélét is mint amit matematikából tanultatok.
+Az adatokkal, típusaikkal és a változó fogalmával is megismerkedtünk, ideje beszélni a műveletekről, azaz az utasításokról, amelyek a program másik részéhez, a kódhoz tartoznak. Lássuk tehát a számítógépes programok kódjának három fő építőkövét, amelyekből akár ez a játék is felépíthető.
+
 A képernyőn megjelenik egymás alatt a 3 pont: "1. Utasítások sorozata", "2. Elágazás", "3. Ciklus"
 
-FELIRAT: Utasítások sorozata
+FELIRAT: 1.Építőkocka: az utasítások sorozata
 
 PIXEL: A előbb már sokat beszéltünk az utasításokról. Nézzük meg a fontosabbakat!
 A táblán megjelennek sorban az utasítások.
@@ -141,17 +144,37 @@ Megjelenik a táblán: gold = gold + 1
 JANKÓ: Ez így jó egyáltalán? Hova lett az elejéről az int szó?
 PIXEL: Az csak akkor kell, ha egy új változót hozunk létre. Tegyük fel, hogy itt a gold változót már korábban létrehozuk. Nos, mi a helyzet ezzel az utasítással?
 Klári: Az aranyak számához egyet ad, és ez legyen az aranyak száma!
-PIXEL: Úgy van! Megnöveli az aranyak számát eggyel!
+PIXEL: Úgy van! Tehát megnöveli az aranyak számát eggyel!
 JANKÓ: Ezt én is tudtam volna!
 Klári: Na persze...
 PIXEL: Mehetünk tovább? Mit szóltok ehhez az utasításhoz?
 Megjelenik a táblán a 'string message = "Aranyaid száma: " + gold'
 JANKÓ: Megint ez a furcsaság, hogy a nevet összeadjuk valamivel. Egy egész számmal, talán?
 Klári: Igen, a gold egy egész számot jelent.
-PIXEL: Valóban furcsa első pillantásra, de csak azért, mert még nem ismeritek a szövegek összefűzését végző műveletet. Itt a plusz jel nem a megszokott értelemben vett összeadást jelenti, hanem a szövegek összefűzését, azaz az első szöveg végéhez toldják a másik szöveget.
+PIXEL: Valóban furcsa első pillantásra, de csak azért, mert még nem ismeritek a szövegek összefűzését végző műveletet. Itt a plusz jel nem a megszokott értelemben vett összeadást jelenti, hanem a szövegek összefűzését, azaz az első szöveg végéhez hozzátoldjuk a másik szöveget.
 JANKÓ: Állj! Te két szövegről beszélsz, itt meg csak a név szöveg, az aranyak száma egész szám. Tehát a szöveghez egy egész számot akarsz hozzáfűzni!
 Klári: Tényleg! Ügyes vagy Jankó!
-PIXEL: Ügyes vagy bizony! Ezzel fel is fedezted a változók és típusok témakör egy fontos elemét: a típusátalakítást. Előfordul, mint most, hogy egy változó értékét nem olyan típusként szeretnék felhasználni, mint amivel létrehoztuk, hanem egy másik típusú értékként. A számból sztringet kell csinálni. Az átalakítás során felléphet hiba, de gyakrabban az fordul elő, hogy az új típus nem képes a régi típus szerint tárolt értéket átvenni és elmenteni. Például egy törtszámot, azaz float számot nem tudunk, veszteség nélkül egészként tárolni, hiszen a törtrész mindig elveszik. Egy egyszerű számot mindig lehet szövegre alakítani.
+PIXEL: Ügyes vagy bizony! Ezzel fel is fedezted a változók és típusok témakör egy fontos elemét: a típusátalakítást. Előfordul, mint most, hogy egy változó értékét nem olyan típusként szeretnék felhasználni, mint amivel létrehoztuk, hanem egy másik típusú értékként. Például itt a számból szöveget kell csinálnunk. Az átalakítás során adódhat hiba, ugyanis gyakrabban fordul elő, hogy az új típus nem képes a régi típusú értéket átvenni. Például egy törtszámot nem tudunk veszteség nélkül egészként tárolni, hiszen a törtrész akkor elvész.
+Viszont egy számot mindig szöveggé lehet alakítani.
+
+FELIRAT: 2. Építőkocka: az elágazás
+
+PIXEL: Naponta sok döntést kell hoznunk, és ilyenkor legalább kétféle irányba indulhatunk tovább. A piros vagy a sárga pólót vegyem ma fel? Kakaót vagy teát igyak a reggelihez?
+JANKÓ: Kakaót!
+PIXEL: Képzeljétek el, minden döntés és minden választás összeállítható igen-nem kérdések sorozatából. Olyan ez mint a kitalálós játék, amiben csak igennel vagy nemmel lehet válaszolni.
+KLÁRI: Azt szeretem játszani!
+PIXEL: A számítógépes programokban is nagyon sokszor kell döntést hozni, és a döntés eredménye alapján folytatni az utasítások sorozatát. Ezt nevezzük elágazásnak, hiszen itt a programunk futása elágazáshoz érkezik, és innen két irányba futhat tovább.
+
+Megjelenik a monitoron egy elágazás: HA gold == 10 AKKOR nyit_kapu
+
+PIXEL: Szerintetek ez mit jelent?
+KLÁRI: Fura az a két egyenlőségjel egymás mellett. Miért ketten vannak? Hogy ne unatkozzanak?
+PIXEL: Jó észrevétel Klári! Korábban láttuk, hogy az egyenlőségjel az értékadást jelenti, amikor egy változónak értéket adunk. Itt viszont egy döntést szeretnénk kifejezni, és ez a döntés egy feltétel alapján születik: ha az aranyak száma egyenlő 10-zel, akkor...
+KÁRI: ...kinyitja a kaput talán?
+PIXEL: Igen, nagyon jó Klári!
+JANKÓ: Akkor a két egyenlőségjel itt azt jelenti, hogy a két dolog egyenlő-e? Lehet egy szöveg egyenlő egy számmal?
+KLÁRI: Látom, téged nagyon megzavart a szöveg és a szám közötti művelet. Bár szerintem is furcsa.
+PIXEL: Így van, a kettős egyenlőségjel valóban nem értéket ad át, hanem összehasonlít két értéket. Az elágazásnak mindig van egy feltétele, amit megvizsgálva hozza a számítógép a döntést, hogy melyik útvonalon megy tovább.
 
 
 
@@ -159,16 +182,6 @@ PIXEL: Ügyes vagy bizony! Ezzel fel is fedezted a változók és típusok téma
 Recept metafora: „1. keverd meg, 2. süsd meg → rántotta" hasonlat
 
 2.2. Algoritmusok és építőköveik
-Videó szöveg
-Most nézzük meg a programozás alapvető építőkockáit.
-Ezeket minden programozási nyelv használja — így a játékok is.
-2.2.1. Változók és értékek
-A változók olyanok, mint kis dobozok.
-Minden dobozban lehet valami:
-egy szám (például 10 pont),
-egy szöveg („Game Over”),
-vagy akár egy pozíció.
-Megjegyzik az adatot, amivel dolgozunk.
 2.2.2. Elágazások és feltételek
 „Ha a karakter hozzáér egy ellenséghez, akkor veszít egy életet.”
 „Ha megnyomom a jobbra gombot, akkor menj jobbra.”

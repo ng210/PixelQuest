@@ -1,7 +1,7 @@
 {
     "player": { "type":"Player", "x":20, "y":340 },
     
-    "L1": { "type":"Life", "x":660, "y":100 },
+    "L1": { "type":"Life", "x":660, "y":60 },
 
     "P0": { "type": "Platform", "x":0, "y":440, "width":1600, "height":64 },
     "P1": { "type": "Platform", "x":120, "y":340, "width":160, "height":28 },

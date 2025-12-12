@@ -7,7 +7,7 @@ export default class Entity {
 	#height						// a figura magassága pixelben
 	#scale = { x:1, y:1 }		// a figura méretezése (nagyítás-kicsinyítés)
 	#rotate = { x:0, y:0, z:0 }	// a figura méretezése (nagyítás-kicsinyítés)
-	#className					// a figura CSS osztálya (megjelenítés)
+	#classList					// a figura CSS osztálya (megjelenítés)
 	#vel = { x:0, y:0 }			// a figura sebessége (vizszintes és függőleges irányban)
 	#acc = { x:0, y:0 }		// a figura gyorsulása (vizszintes és függőleges irányban)
 	#element = null				// a figurát megjelenítő HTML (weboldali) elem
@@ -24,7 +24,7 @@ export default class Entity {
 	set height(he) { this.#height = he }
 	get scale() { return this.#scale }
 	get rotate() { return this.#rotate }
-	get className() { return this.#className }
+	get classList() { return this.#classList }
 	get vel() { return this.#vel }
 	get acc() { return this.#acc }
 	get element() { return this.#element }
@@ -44,18 +44,21 @@ export default class Entity {
 		this.#width = w; this.#height = h
 		this.#vel.x = 0; this.#vel.y = 0
 		this.#acc.x = 0; this.#acc.y = 0
-		this.#className = className
+		this.#classList = []
+		if (className != '') this.#classList.push('entity', className)
 		this.#time = 0
 		this.#isActive = true
 
 		// A HTML alapú megjelenítés nagyon egyszerű:
 		//	- hozzuk létre a HTML elemet (div)
-			this.#element = document.createElement('div')
+		this.#element = document.createElement('div')
 		//	- állítsuk be néhány tulajdonságát
 		//	  például az azonosítóját, vagy
-			this.#element.id = this.#id
-		//	  a megjelenítés sablonját (CSS osztály) 
-			this.#element.className = 'entity ' + className
+		this.#element.id = this.#id
+		//	  a megjelenítés sablonját (CSS osztály)
+		for (let cn of this.#classList) {
+			this.#element.classList.add(cn)
+		}
 	}
 
 	// A figura időben változhat, mozoghat. Az alábbi kódblokk kiszámolja a figura helyét
@@ -89,6 +92,9 @@ export default class Entity {
 	// de HTML megjelenítés esetén ezt a feladatot átveszi a böngésző. Elegendő
 	// volt annyi, hogy korábban a figura HTML elemét hozzáadtuk a weboldalhoz.
 	render() {
+		for (let cn of this.#classList) {
+			this.#element.classList.add(cn)
+		}
 	}
 
 	isMoving() {

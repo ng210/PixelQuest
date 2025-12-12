@@ -14,7 +14,7 @@ import Player from './entities/player.js'
 
 // Game motor/menedzser
 export default class Game {
-	PlayerStartPosition = {x:80, y:120 }	// A játékos kiinduló helye a világban
+	PlayerStartPosition = {x:0, y:0 }	// A játékos kiinduló helye a világban
 
 	#viewport			// A játék grafikus felületét megjelenítő HTML elem.
 	#planes = []		// A játék 4 síkja: 2 háttér, world, előtér
@@ -59,7 +59,7 @@ export default class Game {
 		this.#planes.push(...document.querySelectorAll('.plane'))
 		this.#hud = document.getElementById('hud')
 		this.#scale = 1
-		this.worldWidth = 1600
+		this.worldWidth = 1800
 		this.worldHeight = 900 // játéktér mérete
 		this.#input = new InputHandler()
 		this.#sounds = new SoundManager()
@@ -138,7 +138,7 @@ export default class Game {
 	async loadLevel(path) {
 		let levelData = await fetch('assets/' + path).then(resp => {
 			if (resp.ok) {
-				return resp.json()
+				return path.endsWith('json') ? resp.json() : resp.text()
 			} else {
 				console.error(resp.status)
 				return null
@@ -146,8 +146,138 @@ export default class Game {
 		})
 
 		if (levelData != null) {
+			if (typeof levelData === 'string') {
+				levelData = this.#convertLevel(levelData)
+			}
 			this.#buildLevel(levelData)
 		}
+	}
+
+	#convertLevel(text) {
+		let lines = text.split('\n')
+		let data = {}
+		let counters = {
+			'Platform': 0,
+			'Coin': 0,
+			'Life': 0,
+			'Default': 0
+		}
+		const blockWidth = this.worldWidth / (lines[0].length / 2)
+		const blockHeight = this.worldHeight / lines.length
+		let movingBlocks = []
+		let lastBlock = { x: -1, y: 0, width: 0, height: 0, move: false, subtype:'1' }
+		let y = 0
+		let li = 0
+		for (; li<lines.length-2; li++) {
+			let line = lines[li+2]
+			if (line == '') break
+			let x = 0
+			for (let i=0; i<line.length - 1; i+=2) {
+				let ch = line[i+2]
+				switch (ch) {
+					case ' ':
+						if (lastBlock.x != -1) {
+							let block = {
+								"type": "Platform",
+								"x":lastBlock.x, "y":lastBlock.y,
+								"subtype": lastBlock.subtype,
+								"width":lastBlock.width, "height":lastBlock.height
+							}
+							if (lastBlock.move) {
+								movingBlocks.push(block)
+							}
+							
+							data['P'+counters.Platform] = block
+							counters.Platform++
+							lastBlock.x = -1
+							lastBlock.subtype = '1'
+							lastBlock.move = false
+						}
+						break
+					case 'c':
+						data['C'+counters.Coin] = {
+							"type": "Coin",
+							"x":x, "y":y
+						}
+						counters.Coin++
+						break
+					case 'S':
+						data['S'+counters.Default] = {
+							"type": "Player",
+							"x":x, "y":y
+						}
+						counters.Default++
+						break
+					case 'G':
+						data['G'+counters.Default] = {
+							"type": "Gate",
+							"x":x, "y":y,
+							"fee": 10
+						}
+						counters.Default++
+						break
+					case 'L':
+						data['L'+counters.Life] = {
+							"type": "Life",
+							"x":x, "y":y
+						}
+						counters.Life++
+						break
+					case 'B':
+						if (lastBlock.x == -1) {
+							lastBlock.x = x
+							lastBlock.y = y
+							lastBlock.width = blockWidth
+							lastBlock.subtype = '1'
+							lastBlock.move = false
+							if (line[i+3] == 'm') {
+								lastBlock.move = true
+								lastBlock.subtype = 'm'
+							} else {
+								lastBlock.subtype = line[i+3]
+							}
+							lastBlock.height = blockHeight
+						} else {
+							lastBlock.width += blockWidth
+						}
+						break
+				}
+				x += blockWidth
+			}
+			if (lastBlock.x != -1) {
+				let block = {
+					"type": "Platform",
+					"x":lastBlock.x, "y":lastBlock.y,
+					"subtype": lastBlock.subtype,
+					"width":lastBlock.width, "height":lastBlock.height
+				}
+				if (lastBlock.move) {
+					movingBlocks.push(block)
+					lastBlock.move = false
+				}
+				data['P'+counters.Platform] = block
+				counters.Platform++
+				lastBlock.x = -1
+			}
+			y += blockHeight
+		}
+
+		li += 3
+		let bi = 0
+		for (;li<lines.length; li++) {
+			let tokens = lines[li].split(' ')
+			let bl = movingBlocks[bi++]
+			bl.speed = Number(tokens[0])
+			let path = []
+			for (let ti=1; ti<tokens.length; ti+=2) {
+				path.push({
+					dx: Number(tokens[ti]) * blockWidth,
+					dy: Number(tokens[ti+1]) * blockHeight})
+			}
+			bl.path = path
+		}
+
+		return data
 	}
 
 	#buildLevel(lvlData) {
@@ -160,12 +290,12 @@ export default class Game {
 			// Objektum gyár
 			switch (item.type) {
 				case 'Player':
-					entity = new Player(this, name, item.x, item.y);
 					this.PlayerStartPosition.x = item.x
 					this.PlayerStartPosition.y = item.y
+					entity = new Player(this, name, item.x, item.y);
 					this.pixel = this.addEntity(new Entity(this, 'PIX', item.x + 56, item.y - 20, 40, 40, 'pixel'))
 					break
-				case 'Platform': entity = new Platform(this, name, item.x, item.y, item.width, item.height, item.path, item.speed); break
+				case 'Platform': entity = new Platform(this, name, item.subtype, item.x, item.y, item.width, item.height, item.path, item.speed); break
 				case 'Coin': entity = new Coin(this, name, item.x, item.y); break
 				case 'Life': entity = new Life(this, name, item.x, item.y); break
 				case 'Gate': entity = new Gate(this, name, item.x, item.y, item.fee); break

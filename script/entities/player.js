@@ -23,7 +23,7 @@ export default class Player extends Entity {
 		this.#wasOnGround = false
 		this.#isOnGround = false
 		this.#speed = 30
-		this.#jumpSpeed = -150
+		this.#jumpSpeed = -160
 		this.#reset()
 	}
 
@@ -116,6 +116,7 @@ export default class Player extends Entity {
 					}, 500)
 				}
 				life.collect()
+				break
 			case 'Gate':
 				if (this.game.gate.isOpen) {
 					this.game.win();

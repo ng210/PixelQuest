@@ -6,16 +6,34 @@ export default class Platform extends Entity {
 	#speed				// a plattform sebessége
 	#currentTargetIndex	// a plattform útvonalán következő pontja
 	#color
+	#subtype
 
 	get color() { return this.#color; }
 	set color(col) { this.#color = col; }
 
-	constructor(game, id, x, y, w = 160, h = 28, path = null, speed = 60) {
+	constructor(game, id, subtype, x, y, w = 160, h = 28, path = null, speed = 60) {
 		super(game, id, x, y, w, h, 'platform');
-		this.#path = path;
+		let subclass = subtype.trim() != '' ? 'p'+subtype : 'p1'
+		this.classList.push(subclass)
+		this.addPath(path);
 		this.#speed = speed;
 		this.#currentTargetIndex = 0;
-		this.#color = 'white'
+		//this.#color = 'white'
+	}
+
+	addPath(path) {
+		if (path != null) {
+			if (this.#path == null) {
+				this.#path = []
+				this.#path.push({ x:this.pos.x, y:this.pos.y })
+			}
+			let x = this.pos.x, y = this.pos.y
+			for (let delta of path) {
+				x += delta.dx
+				y += delta.dy
+				this.#path.push({ x, y })
+			}
+		}
 	}
 
 	update(dt) {

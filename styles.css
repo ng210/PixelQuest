@@ -115,7 +115,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-weight: 700;
     box-shadow: 0 6px 12px rgba(0, 0, 0, .18);
   }
@@ -125,11 +124,23 @@ body {
     width: 160px;
     height: 48px;
     background: linear-gradient(var(--platform), #6f573d);
-    background-image: url(assets/p1.png);
     /* border-top: 4px solid #a07f59;
     border-radius: 4px; */
     box-sizing: border-box;
   }
+
+  .p1 {
+    background-image: url(assets/p1.png);
+  }
+
+  .p2 {
+    background-image: url(assets/p2.png);
+  }
+
+  .pm {
+    background-image: url(assets/pm.png);
+  }
+
 
   /* coin */
   .coin {
@@ -187,8 +198,6 @@ body {
 
   /* gate / kapu */
   .gate {
-    width: 80px;
-    height: 120px;
     background: linear-gradient(#333, #111);
     border: 4px solid #000;
     border-radius: 6px;
@@ -197,7 +206,7 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    transition: all 1s;
+    transition: filter 1.2s;
   }
 
   .gate.locked {

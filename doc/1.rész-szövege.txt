@@ -87,13 +87,13 @@ JANKÓ: Háát, nem hallottam még ilyesmiről.
 Klári: A számítógépbe be lehet írni a nevedet, bárkinek a nevét. És én úgy tudom, hogy a számítógép csak a számokat ismeri.
 PIXEL: Bravó Klári! Nagyon jó irányban haladsz. Valóban, a számítógép csak a számokat érti, de mi, akik használjuk, a számoknak értelmezést adunk, így a számként tárolt adat lehet szöveg, de akár hang, kép vagy videó is. A számítógépes programban tehát használunk különböző típusú adatokat, a leggyakoribbak az egész és törtszámok, a karakter, a szöveg és a logikai, azaz igaz-hamis típus. Lássunk ezekre példákat:
 Új tábla jelenik meg:
-    egész i = 1, tört t = 0.5,
+    egész e = 1, tört t = 0.5,
     karakter k = "A", szöveg s = "Helló Világ",
-    logikai b = Igaz
+    logikai l = Igaz
 PIXEL: A legtöbb programnyelv az angol nyelvből kölcsönözte a kulcsszavait, így a fenti adatok típusainak elnevezéseit is.
 A tábla tartalma megváltozik:
-    int i = 1, float t = 0.5,
-    char k = "A", string s = "Helló Világ",
+    int i = 1, float f = 0.5,
+    char c = "A", string s = "Helló Világ",
     boolean b = True
 Az int, azaz integer az egész számokat jelenti, a float, azaz floating point, magyarul lebegőpontos számok a valós törtszámok megfelelői.
 A char, azaz character egy karakter vagyis egy betű, számjegy, írásjel vagy egyéb jel. A string, ami magyarul zsinórt vagy füzért jelent, karakterekből áll, mondhatni egy karakterfüzér vagy karakterlánc. Végül a boolean a logikai típus...

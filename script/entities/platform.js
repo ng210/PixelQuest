@@ -6,28 +6,26 @@ export default class Platform extends Entity {
 	#speed				// a plattform sebessége
 	#currentTargetIndex	// a plattform útvonalán következő pontja
 	#color
-	#subtype
 
-	get color() { return this.#color; }
-	set color(col) { this.#color = col; }
+	get color() { return this.#color }
+	set color(col) { this.#color = col }
 
-	constructor(game, id, subtype, x, y, w = 160, h = 28, path = null, speed = 60) {
-		super(game, id, x, y, w, h, 'platform');
-		let subclass = subtype.trim() != '' ? 'p'+subtype : 'p1'
-		this.classList.push(subclass)
-		this.addPath(path);
-		this.#speed = speed;
-		this.#currentTargetIndex = 0;
-		//this.#color = 'white'
+	constructor(id, x, y, w = 160, h = 28, path = null, speed = 60) {
+		super(id, x, y, w, h);
+		this.mass = 100
+		this.#path = null
+		this.addPath(path)
+		this.#speed = speed
+		this.#currentTargetIndex = 0
 	}
 
 	addPath(path) {
 		if (path != null) {
 			if (this.#path == null) {
 				this.#path = []
-				this.#path.push({ x:this.pos.x, y:this.pos.y })
+				this.#path.push({ x:this.position.x, y:this.position.y })
 			}
-			let x = this.pos.x, y = this.pos.y
+			let x = this.position.x, y = this.position.y
 			for (let delta of path) {
 				x += delta.dx
 				y += delta.dy
@@ -43,8 +41,8 @@ export default class Platform extends Entity {
 			const t2 = this.#path[(this.#currentTargetIndex + 1) % this.#path.length]
 			const tx = t2.x - t1.x
 			const ty = t2.y - t1.y
-			const dx = t2.x - this.pos.x
-			const dy = t2.y - this.pos.y
+			const dx = t2.x - this.position.x
+			const dy = t2.y - this.position.y
 			
 			if ((tx > 0 && dx < 0) || (tx < 0 && dx > 0)) {
 				this.#currentTargetIndex = (this.#currentTargetIndex + 1) % this.#path.length
@@ -54,25 +52,13 @@ export default class Platform extends Entity {
 				this.#currentTargetIndex = (this.#currentTargetIndex + 1) % this.#path.length
 			}
 
-			this.vel.x = Math.sign(tx) * this.#speed
-			this.vel.y = Math.sign(ty) * this.#speed
-
-			// const dist = Math.hypot(dx, dy);	// = négyzetgyök(dx*dx + dy*dy) = távolság
-			// if (dx < 0)
-			// if (dist < 1) {
-			// 	this.#currentTargetIndex = (this.#currentTargetIndex + 1) % this.#path.length;
-			// } else {
-			// 	const nx = dx / dist; const ny = dy / dist;
-			// 	this.vel.x = nx * this.#speed;
-			// 	this.vel.y = ny * this.#speed;
-			// }
-			// this.vel.x = nx * this.#speed;
-			// this.vel.y = ny * this.#speed;
+			this.velocity.x = Math.sign(tx) * this.#speed
+			this.velocity.y = Math.sign(ty) * this.#speed
 		}
 	}
 
-	render() {
-		super.render()
-		this.element.style.backgroundColor = this.#color
-	}
+	// render() {
+	// 	super.render()
+	// 	this.element.style.backgroundColor = this.#color
+	// }
 }

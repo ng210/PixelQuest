@@ -116,6 +116,18 @@ export default class Game {
             entity.update(dt)
         }
 
+        const player = this.#services.level.player
+		if (player.position.y > this.#services.level.worldSize.height) {
+			player.lives--
+			this.#services.ui.updateLives(this.lives)
+			this.#services.sounds.lifeLost()
+            this.stop()
+			setTimeout(() => {
+                this.#services.level.respawnPlayer()
+                this.start()
+            }, 1000)
+		}
+
         // 2. Collision detection & resolution
         this.#services.level.handleCollisions(dt)
 

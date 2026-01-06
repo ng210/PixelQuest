@@ -132,4 +132,14 @@ static freqTable = {
 		this.tone2('E3', 'E4', 0.4, 0.01, 'square', len, t);
 		this.tone2('G3', 'G4', 0.3, 0.01, 'square', len, t);
 	}
+
+	lifeLost() {
+		const len = 0.5
+		let delay = 0.0
+		
+		for (let i=0; i<4; i++) {
+			this.tone2('D3', 'C#3', 0.4, 0.2, 'square', len, delay); delay += 0.2 * len
+			this.tone2('H3', 'A#3', 0.4, 0.2, 'square', len, delay); delay += 0.2 * len
+		}
+	}
 }

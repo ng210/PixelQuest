@@ -59,6 +59,13 @@ export default class LevelManager {
 		} else console.warn('Entity nem található!')
 		return entity
 	}
+
+    respawnPlayer() {
+        this.#player.position.x = this.#playerStartPosition.x
+        this.#player.position.y = this.#playerStartPosition.y
+        this.#player.velocity.x = 0
+        this.#player.velocity.y = 0
+    }
     //#endregion
 
     //#region Level management

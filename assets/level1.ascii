@@ -1,26 +1,26 @@
   0                   1                   2                   3                   
-  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 
- 1                                                                          B1B1B1
- 2                c   c   c               c       c       c     c   c   W   B2B2B2
- 3                P1P1P1P1P1            B1B1    B1B1    B1B1    B1B1B1B1B1B1B2B2B2
- 4            c                                                                   
- 5            B1B1                  B1B1                                          
- 6        c                                                                       
- 7    S   B1B1                  B1B1                              C c c c c c c   
- 8                                                              B1B1B1B1B1B1B1B1B1
- 9      L       c                                                                 
- 1B1B1B1B1B1B1B1B1          B1B1                                                  
- 2                B1                                                          G   
- 3        L         B1                                                            
- 4      B1B1B1        B1                                                          
- 5c         B2                          P1P1P1                              B1B1B1
- 5B1        B2              c                             c                 B2B2B2
- 6        c B2            B1B1B1                        P1P1P1        B1B1B1B2B2B2
- 7      B1B1B2    B1                                                        B2B2B2
- 8c               B2B1                                                      B2B2B2
- 9B1              B2B2B1                                                    B2B2B2
-20                B2B2B2B1                                                  B2B2B2
- 1B1B1B1B1B1B1B1B1B2B2B2B2B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B2B2B2
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+ 1                                                                            B1B1B1
+ 2                  c   c   c               c       c       c     c   c   W   B2B2B2
+ 3B1                P1P1P1P1P1            B1B1    B1B1    B1B1    B1B1B1B1B1B1B2B2B2
+ 4B2            c                                                                   
+ 5B2            B1B1                  B1B1                                          
+ 6B2        c                                                                       
+ 7B2    S   B1B1                  B1B1                              C c c c c c c   
+ 8B2                                                              B1B1B1B1B1B1B1B1B1
+ 9B2      L       c                                                                 
+ 1B2B1B1B1B1B1B1B1B1          B1B1                                                  
+ 2B2                B1                                                          G   
+ 3B2        L         B1                                                            
+ 4B2      B1B1B1        B1                                                          
+ 5B2c         B2                          P1P1P1                              B1B1B1
+ 5B2B1        B2              c                             c                 B2B2B2
+ 6B2        c B2            B1B1B1                        P1P1P1        B1B1B1B2B2B2
+ 7B2      B1B1B2    B1                                                        B2B2B2
+ 8B2c               B2B1                                                      B2B2B2
+ 9B2B1              B2B2B1                                                    B2B2B2
+20B2                B2B2B2B1                                                  B2B2B2
+ 1B2B1B1B1B1B1B1B1B2B2B2B2B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B2B2B2B2
 
 60 0 2
 40 0 4

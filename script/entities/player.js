@@ -65,6 +65,7 @@ export default class Player extends Entity {
 				this.velocity.x *= 0.01;
 			}
 		}
+
 		this.#wasGrounded = this.#isGrounded;
 		this.#isGrounded = false;
 	}

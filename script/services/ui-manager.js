@@ -72,7 +72,7 @@ export default class UIManager {
 	}
 
 	updateLives(n) {
-		this.#livesElement.innerText = '♥♥♥♥♥♥♥♥♥♥'.slice(0, n)
+		this.#livesElement.innerText = '♥♥♥♥♥'.slice(0, n)
 	}
 
 	updateCamera(entity, dt) {

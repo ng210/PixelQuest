@@ -34,7 +34,7 @@ export default class Player extends Entity {
 		// this.#wasHittingGate = false
 		// this.#isHittingGate = false
 		this.#speed = 200
-		this.#jumpSpeed = -350
+		this.#jumpSpeed = -500
 
 		this.#reset()
 	}
@@ -91,6 +91,7 @@ export default class Player extends Entity {
 						coin.collect();
 						this.#coins++;
 						this.#services.ui.updateCoins(this.#coins);
+						this.#services.level.tryOpenGate();
 						//coin.element.classList.remove('up')
 					}, 500)
 				}
@@ -112,15 +113,15 @@ export default class Player extends Entity {
 				}
 				result = false
 				break
-		// 	case 'Gate':
-		// 		if (entity.isOpen) {
-		// 			this.game.gameOver(true)
-		// 		}
-		// 		if (!this.#wasHittingGate) {
-		// 			this.game.sounds.hit()
-		// 		}
-		// 		this.#isHittingGate = true
-		// 		break
+			case 'Gate':
+				if (entity.isOpen) {
+					this.game.gameOver(true)
+				}
+				if (!this.#wasHittingGate) {
+					this.game.sounds.hit()
+				}
+				this.#isHittingGate = true
+				break
 			case 'Block':
 				if (collisionInfo.normal.y == -1) {
 					this.#isGrounded = true

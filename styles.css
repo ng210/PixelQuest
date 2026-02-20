@@ -87,6 +87,7 @@ body {
 
 /* Player */
 .player {
+	border: solid 2px pink;
 	width: 48px;
 	height: 64px;
 	background: linear-gradient(#fff, #ddd);

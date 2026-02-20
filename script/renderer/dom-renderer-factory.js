@@ -27,6 +27,9 @@ export default class DomRendererFactory extends RendererFactory {
             case 'Pixel':
                 entity.renderer = new DomRenderer(entity, this.initData, ['entity', 'pixel'])
                 break
+            case 'Gate':
+                entity.renderer = new DomRenderer(entity, this.initData, ['entity', 'gate', 'locked'])
+                break
             default:
                 entity.renderer = new DomRenderer(entity, this.initData, ['entity'])
             break

@@ -4,10 +4,10 @@ import Player from '../entities/player.js'
 import Pixel from '../entities/pixel.js'
 import Coin from '../entities/coin.js'
 import Life from '../entities/life.js'
-// import Gate from './entities/gate.js'
+import Gate from '../entities/gate.js'
 
 export default class LevelManager {
-	static #gravity = 400   // gravitáció
+	static #gravity = 600   // gravitáció
 
     #worldSize              // a teljes játéktér mérete
     #blockSize			    // egy blokk mérete
@@ -87,6 +87,17 @@ export default class LevelManager {
         }
     }
 
+    tryOpenGate() {
+        this.#entities
+        .filter(e => e instanceof Gate)
+        .forEach(g => {
+            if (g.tryOpen(this.#player.coins)) {
+                g.open();
+                this.#services.sounds.openGate();
+            }
+        });
+    }
+
     #convertLevel(text) {
 
         function createBlock(type) {
@@ -115,10 +126,13 @@ export default class LevelManager {
         let movingBlocks = []
         let lastBlock = { x: -1, y: 0, width: 0, height: 0, move: false, subtype:'1' }
         let y = 0
-        let li = 0
+        let li = 2
         for (; li<lines.length-2; li++) {
-            let line = lines[li+2]
-            if (line == '') break
+            let line = lines[li];
+            if (line == '\r' || line == '\n') {
+                li++
+                break
+            }
             let x = 0
             for (let i=0; i<line.length - 2; i+=2) {
                 let ch = line[i+2].toUpperCase()
@@ -143,7 +157,7 @@ export default class LevelManager {
                         data['G'+counters.Default] = {
                             "type": "Gate",
                             "x":x, "y":y,
-                            "fee": 10
+                            "fee": 1
                         }
                         counters.Default++
                         break
@@ -162,12 +176,12 @@ export default class LevelManager {
                             lastBlock.type = 'Block'
                             lastBlock.subtype = '1'
                             lastBlock.move = false
-                            if (line[i+3] == 'm') {
-                                lastBlock.move = true
-                                lastBlock.subtype = 'm'
-                            } else {
+                            // if (line[i+3] == 'm') {
+                            //     lastBlock.move = true
+                            //     lastBlock.subtype = 'm'
+                            // } else {
                                 lastBlock.subtype = line[i+3]
-                            }
+                            // }
                             lastBlock.height = blockHeight
                         } else {
                             lastBlock.width += blockWidth
@@ -211,7 +225,7 @@ export default class LevelManager {
             y += blockHeight
         }
 
-        li += 3
+        // li += 3
         let bi = 0
         for (;li<lines.length; li++) {
             let tokens = lines[li].split(' ')
@@ -266,7 +280,9 @@ export default class LevelManager {
                 case 'Life':
                     entity = new Life(name, item.x, item.y, item.width, item.height)
                     break
-                // case 'Gate': entity = new Gate(this.#game, name, item.x, item.y, item.fee); break
+                case 'Gate':
+                    entity = new Gate(name, item.x, item.y, item.fee);
+                    break
             }
             if (entity) {
                 this.addEntity(entity)

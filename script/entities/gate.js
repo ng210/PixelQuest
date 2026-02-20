@@ -7,8 +7,8 @@ export default class Gate extends Entity {
 
 	get isOpen() { return this.#isOpen }
 
-	constructor(game, id, x, y, requiredCoins = 3) {
-		super(game, id, x, y, 80, 120, 'gate');
+	constructor(id, x, y, requiredCoins = 3) {
+		super(id, x, y, 80, 120, 'gate');
 		this.#isOpen = false;
 		this.#requiredCoins = requiredCoins;
 	}
